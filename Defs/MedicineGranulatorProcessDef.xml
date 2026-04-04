@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Have to create custom def for new input slots
+    -->
+    <MassProductionExpansion.ProcessorTemplateDef>
+        <ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
+        <defName>VFEFactory_Medicine_</defName>
+        <label>Make {0}</label>
+        <description>Make {0} out of the materials inserted.</description>
+        <!--<priorityInBillList>+</priorityInBillList>-->
+        <spawnOnInteractionCell>true</spawnOnInteractionCell>
+        <autoGrabFromHoppers>true</autoGrabFromHoppers>
+        <autoInputSlots>
+            <li>(-1,0,2)</li>
+            <li>(0,0,2)</li>
+            <li>(1,0,2)</li>
+        </autoInputSlots>
+        <isFactoryProcess>true</isFactoryProcess>
+        <autoExtract>true</autoExtract>
+        <onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+        <!--<useFirstIngredientAsOutputStuff>true</useFirstIngredientAsOutputStuff>-->
+        <disallowMixing>true</disallowMixing>
+        <sustainerWhenWorking>true</sustainerWhenWorking>
+        <sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+        <effecterWhenWorking>true</effecterWhenWorking>
+        <effecterDef>VFEFactory_Default</effecterDef>
+        <maxOutputCount>3</maxOutputCount>
+    </MassProductionExpansion.ProcessorTemplateDef>
+
+
+</Defs>
