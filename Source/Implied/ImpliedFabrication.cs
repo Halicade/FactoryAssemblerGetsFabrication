@@ -22,7 +22,9 @@ public class ImpliedFabrication
             .processes.Count;
 
         foreach (ThingDef def in fabricationBenchRecipes) {
-            yield return Generator.Fabrication.ProcessFromFabricationRecipe("MPE_Factory_Assembler_",4,InternalDefs.VFEFactory_Assembler_, def, ++MassProductionExpansion.FabricatorCount,InternalDefs.VFEFactory_AutomatedAssembler,
+            yield return Generator.Fabrication.ProcessFromFabricationRecipe("MPE_Factory_AssemblerT1_", 4,
+                InternalDefs.VFEFactory_Assembler_, def, ++MassProductionExpansion.FabricatorCount,
+                InternalDefs.VFEFactory_AutomatedAssembler,
                 hotReload);
         }
     }

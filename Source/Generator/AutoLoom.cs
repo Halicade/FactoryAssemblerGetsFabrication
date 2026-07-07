@@ -8,13 +8,14 @@ namespace MassProductionExpansion.Generator;
 
 public static class AutoLoom
 {
-    public static ProcessDef ProcessFromTailoringRecipe(string prefix, int tickMultiplier, AutoloomProcessTemplateDef tp,
+    public static ProcessDef ProcessFromTailoringRecipe(string prefix, int tickMultiplier,
+        AutoloomProcessTemplateDef tp,
         ThingDef def, int index, ThingDef defGettingRecipes, bool hotReload = false) {
         string defName = prefix + def.defName;
         ProcessDef processDef = hotReload
             ? (DefDatabase<ProcessDef>.GetNamed(defName, errorOnFail: false) ?? new ProcessDef())
             : new ProcessDef();
-        
+
         processDef.defName = defName;
         processDef.label = tp.label.Formatted(def.label);
         processDef.description = tp.description.Formatted(def.label);

@@ -31,7 +31,7 @@ public class MassProductionExpansion : Mod
     public static void FactoryStuffToAssemblerPostFix(bool hotReload = false) {
         _vehiclesActive = ModLister.AnyModActiveNoSuffix(["oskarpotocki.vanillavehiclesexpanded"]);
         _fsfTweaksActive = ModLister.AnyModActiveNoSuffix(["FrozenSnowFox.FrozenSnowFoxTweaks"]);
-        ChemfuelExpandedActive=ModLister.AnyModActiveNoSuffix(["vanillaexpanded.vchemfuele"]);
+        ChemfuelExpandedActive = ModLister.AnyModActiveNoSuffix(["vanillaexpanded.vchemfuele"]);
 
         foreach (PipeSystem.ProcessDef item in ImpliedAutoloom.ImpliedAutoloomProcesses(hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);

@@ -19,7 +19,9 @@ public class ImpliedVehicles
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>()
             .processes.Count;
         foreach (ThingDef def in garageBenchRecipes) {
-            yield return Generator.Fabrication.ProcessFromFabricationRecipe("MPE_Factory_Assembler_",4,InternalDefs.VFEFactory_Assembler_, def, ++MassProductionExpansion.FabricatorCount,InternalDefs.VFEFactory_AutomatedAssembler,
+            yield return Generator.Fabrication.ProcessFromFabricationRecipe("MPE_Factory_Assembler_", 4,
+                InternalDefs.VFEFactory_Assembler_, def, ++MassProductionExpansion.FabricatorCount,
+                InternalDefs.VFEFactory_AutomatedAssembler,
                 hotReload);
         }
     }

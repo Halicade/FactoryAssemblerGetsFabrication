@@ -9,7 +9,6 @@ public static class Medicine
 {
     public static ProcessDef ProcessFromMedicineRecipe(string prefix, int tickMultiplier, ProcessorTemplateDef tp,
         ThingDef def, int index, ThingDef defGettingRecipes, bool hotReload = false) {
-        
         string defName = prefix + def.defName;
         ProcessDef processDef = (hotReload
             ? (DefDatabase<ProcessDef>.GetNamed(defName, errorOnFail: false) ?? new ProcessDef())
