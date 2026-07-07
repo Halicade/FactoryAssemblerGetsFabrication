@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-    <name>Factory Assembler Gets Fabrication and stuff</name>
+    <name>Mass production expansion</name>
     <author>Halicade</author>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
-    <packageId>Hali.FactoryAssemblerGetsFabrication</packageId>
+    <packageId>Hali.MassProductionExpansion</packageId>
     <description>My Rimworld Mod</description>
 
     <modDependencies>
@@ -22,8 +22,6 @@
         </li>
     </modDependencies>
     <loadAfter>
-        <li>Ludeon.RimWorld</li>
-        <li>Ludeon.RimWorld.Ideology</li>
-        <li>Ludeon.RimWorld.Royalty</li>
+        <li>vanillaexpanded.vfefactory</li>
     </loadAfter>
 </ModMetaData>
