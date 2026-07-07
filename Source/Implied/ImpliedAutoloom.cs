@@ -22,10 +22,9 @@ public class ImpliedAutoloom
             .processes.Count + 1;
 
         foreach (ThingDef def in tailoringBenchRecipes) {
-            foreach (AutoloomProcessTemplateDef templateDef in DefDatabase<AutoloomProcessTemplateDef>.AllDefs) {
-                yield return AutoLoom.ProcessFromTailoringRecipe("MPE_Factory_AutoLoomT1_", 4, templateDef, def,
-                    ++MassProductionExpansion.AutoLoomCount, InternalDefOf.VFEFactory_Autoloom, hotReload);
-            }
+            yield return AutoLoom.ProcessFromTailoringRecipe("MPE_Factory_AutoLoomT1_", 4,
+                InternalDefs.VFEFactory_Autoloom_, def,
+                ++MassProductionExpansion.AutoLoomCount, InternalDefOf.VFEFactory_Autoloom, hotReload);
         }
     }
 }

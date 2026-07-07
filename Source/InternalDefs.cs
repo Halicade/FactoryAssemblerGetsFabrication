@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using VanillaFurnitureExpandedFactory;
 using Verse;
 
 namespace MassProductionExpansion;
@@ -17,6 +18,8 @@ public class InternalDefs
     public static ProcessorTemplateDef VFEFactory_Assembler_;
 
     public static ProcessorTemplateDef VFEFactory_Medicine_;
+
+    public static AutoloomProcessTemplateDef VFEFactory_Autoloom_;
 
     //Required so the game doesn't yell at you if not loaded
     [MayRequire("oskarpotocki.vanillavehiclesexpanded")]
