@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MassProductionExpansion.Defs;
 using PipeSystem;
 using Verse;
 
@@ -12,16 +13,16 @@ public class ImpliedBionics
             (x.costStuffCount != 0 || x.costList != null)
             //Assembling station only has 4 ports
             && x.costList?.Count < 5
-            && x.recipeMaker?.recipeUsers?.Contains(InternalDefs.FSFBionicsTable) == true &&
+            && x.recipeMaker?.recipeUsers?.Contains(InternalDefOf.FSFBionicsTable) == true &&
             !x.defName.Contains("Shell")).ToList();
 
-        MassProductionExpansion.FabricatorCount = InternalDefs.VFEFactory_AutomatedAssembler
+        MassProductionExpansion.FabricatorCount = FactoryDefOf.VFEFactory_AutomatedAssembler
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>()
             .processes.Count;
         foreach (ThingDef def in FSFBionicRecipes) {
             yield return Generator.Fabrication.ProcessFromFabricationRecipe("MPE_Factory_AssemblerT1_", 4,
-                InternalDefs.VFEFactory_Assembler_, def, ++MassProductionExpansion.FabricatorCount,
-                InternalDefs.VFEFactory_AutomatedAssembler,
+                FactoryDefOf.VFEFactory_Assembler_, def, ++MassProductionExpansion.FabricatorCount,
+                FactoryDefOf.VFEFactory_AutomatedAssembler,
                 hotReload);
         }
     }

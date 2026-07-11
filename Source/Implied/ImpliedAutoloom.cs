@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MassProductionExpansion.Defs;
 using MassProductionExpansion.Generator;
 using PipeSystem;
 using VanillaFurnitureExpandedFactory;
 using Verse;
+using InternalDefOf = VanillaFurnitureExpandedFactory.InternalDefOf;
 
 namespace MassProductionExpansion.Implied;
 
@@ -23,7 +25,7 @@ public class ImpliedAutoloom
 
         foreach (ThingDef def in tailoringBenchRecipes) {
             yield return AutoLoom.ProcessFromTailoringRecipe("MPE_Factory_AutoLoomT1_", 4,
-                InternalDefs.VFEFactory_Autoloom_, def,
+                FactoryDefOf.VFEFactory_Autoloom_, def,
                 ++MassProductionExpansion.AutoLoomCount, InternalDefOf.VFEFactory_Autoloom, hotReload);
         }
     }
