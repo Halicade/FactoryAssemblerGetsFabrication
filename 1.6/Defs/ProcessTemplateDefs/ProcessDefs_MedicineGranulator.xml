@@ -5,7 +5,7 @@
     -->
     <MassProductionExpansion.ProcessorTemplateDef>
         <ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
-        <defName>VFEFactory_Medicine_</defName>
+        <defName>MPE_Medicine_</defName>
         <label>Make {0}</label>
         <description>Make {0} out of the materials inserted.</description>
         <!--<priorityInBillList>+</priorityInBillList>-->

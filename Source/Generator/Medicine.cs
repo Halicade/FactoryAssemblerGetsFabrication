@@ -50,14 +50,18 @@ public static class Medicine
         if (category != null) {
             processDef.ingredients.Add(new ProcessDef.Ingredient {
                 thingCategory = category,
-                countNeeded = def.costStuffCount * 4
+                countNeeded = def.recipeMaker.bulkRecipeCount > 0
+                    ? def.costStuffCount * def.recipeMaker.bulkRecipeCount
+                    : def.costStuffCount
             });
         }
 
         processDef.results = [
             new ProcessDef.Result {
                 thing = def,
-                count = 4
+                count = def.recipeMaker.bulkRecipeCount > 0
+                    ? def.recipeMaker.productCount * def.recipeMaker.bulkRecipeCount
+                    : def.recipeMaker.productCount
             }
         ];
         processDef.isFactoryProcess = tp.isFactoryProcess;

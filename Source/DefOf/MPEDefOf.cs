@@ -1,15 +1,17 @@
 ﻿using RimWorld;
-using VanillaFurnitureExpandedFactory;
 using Verse;
 
 namespace MassProductionExpansion.Defs;
 
 [DefOf]
-public class InternalDefOf
+public class MPEDefOf
 {
     public static ThingDef FabricationBench;
 
     public static ThingDef DrugLab;
+    public static ThingDef BiofuelRefinery;
+    public static ThingDef ElectricSmithy;
+    public static ThingDef FueledSmithy;
 
 
     public static ThingDef MPE_T2AutomatedMasonrySaw;
@@ -28,6 +30,10 @@ public class InternalDefOf
     public static ThingDef MPE_HiTechMedicineGranulator;
     public static ThingDef MPE_HiTechAutomatedMachiningBay;
     public static ThingDef MPE_HiTechAutomatedCrematorium;
+    
+    public static ProcessorTemplateDef MPE_Assembler_;
+    public static ProcessorTemplateDef MPE_Medicine_;
+    public static ProcessorTemplateDef MPE_Biofuel_;
 
 
     //Required so the game doesn't yell at you if not loaded
@@ -37,7 +43,8 @@ public class InternalDefOf
     [MayRequire("FrozenSnowFox.FrozenSnowFoxTweaks")]
     public static ThingDef FSFBionicsTable;
 
-    static InternalDefOf() {
-        DefOfHelper.EnsureInitializedInCtor(typeof(InternalDefOf));
+    static MPEDefOf() {
+        DefOfHelper.EnsureInitializedInCtor(typeof(MPEDefOf));
     }
+
 }

@@ -9,8 +9,6 @@ public class FactoryDefOf
 {
     public static ThingDef VFEFactory_AutomatedAssembler;
     public static ThingDef VFEFactory_MedicineGranulator;
-    public static ProcessorTemplateDef VFEFactory_Assembler_;
-    public static ProcessorTemplateDef VFEFactory_Medicine_;
     public static AutoloomProcessTemplateDef VFEFactory_Autoloom_;
     public static ThingDef VFEFactory_AutomatedMasonrySaw;
     public static ThingDef VFEFactory_AutomatedMincer;

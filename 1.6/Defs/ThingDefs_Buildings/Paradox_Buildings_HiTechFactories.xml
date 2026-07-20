@@ -86,6 +86,7 @@
 				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
+					<li>MPE_T2_DigForMetals</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
@@ -287,6 +288,7 @@
 				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
+					
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
@@ -591,6 +593,9 @@
 				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
+					<li>MPE_T2_MakeSurvivalMeal</li>
+					<li>MPE_T2_MakeSimpleMeal</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeSimpleGrill</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>

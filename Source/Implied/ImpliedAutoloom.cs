@@ -19,14 +19,14 @@ public class ImpliedAutoloom
             && x.costList?.Count < 3
             && x.recipeMaker?.recipeUsers?.Contains(InternalDefOf.HandTailoringBench) == true).ToList();
 
-        MassProductionExpansion.AutoLoomCount = InternalDefOf.VFEFactory_Autoloom
+        int autoLoomCount = InternalDefOf.VFEFactory_Autoloom
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>()
             .processes.Count + 1;
 
         foreach (ThingDef def in tailoringBenchRecipes) {
             yield return AutoLoom.ProcessFromTailoringRecipe("MPE_Factory_AutoLoomT1_", 4,
                 FactoryDefOf.VFEFactory_Autoloom_, def,
-                ++MassProductionExpansion.AutoLoomCount, InternalDefOf.VFEFactory_Autoloom, hotReload);
+                ++autoLoomCount, InternalDefOf.VFEFactory_Autoloom, hotReload);
         }
     }
 }

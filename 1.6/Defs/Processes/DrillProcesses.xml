@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    
+    <PipeSystem.ProcessDef>
+        <defName>MPE_T2_DigForMetals</defName>
+        <label>Dig for metals</label>
+        <labelOverride>Dig for metals</labelOverride>
+        <description>Dig for random metals. Type of metal extracted depends on the deep commonality of the resource. The amount depends on the usual yield of such a deposit.</description>
+        <priorityInBillList>10</priorityInBillList>
+        <spawnOnInteractionCell>true</spawnOnInteractionCell>
+        <ticks>23775</ticks>
+        <results>
+            <li>
+                <thing>Steel</thing>
+                <count>1</count>
+                <workerClass>MassProductionExpansion.ResultWorker.Metals</workerClass>
+                <outputStringOverride>VFEFactory_Metals</outputStringOverride>
+            </li>
+        </results>
+        <isFactoryProcess>true</isFactoryProcess>
+        <autoExtract>true</autoExtract>
+        <onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+        <sustainerWhenWorking>true</sustainerWhenWorking>
+        <sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+        <effecterWhenWorking>true</effecterWhenWorking>
+        <effecterDef>Drill</effecterDef>
+        <worksInSpace>false</worksInSpace>
+        <maxOutputCount>75</maxOutputCount>
+    </PipeSystem.ProcessDef>
+    
+    
+</Defs>

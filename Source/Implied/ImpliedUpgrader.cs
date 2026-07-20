@@ -24,7 +24,7 @@ public class ImpliedUpgrader
             
             yield return UpgradeGenerator.UpgradeTierCombinedProcesses(prefix: "MPE_Masonry_T2", tickMultiplier: 0.75f,
                 defBeingUpgraded: def,
-                buildingGettingRecipes: InternalDefOf.MPE_T2AutomatedMasonrySaw, index: ++MasonryButcherCounter,
+                buildingGettingRecipes: MPEDefOf.MPE_T2AutomatedMasonrySaw, index: ++MasonryButcherCounter,
                 hotReload: hotReload);
         }
     }

@@ -1,36 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-<!--
-Have to create custom def for new input slots
--->
+
     <MassProductionExpansion.ProcessorTemplateDef>
         <ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
-        <defName>MPE_Assembler_</defName>
+        <defName>MPE_Biofuel_</defName>
         <label>Make {0}</label>
         <description>Make {0} out of the materials inserted.</description>
-        <!--<priorityInBillList>+</priorityInBillList>-->
+        
         <spawnOnInteractionCell>true</spawnOnInteractionCell>
         <autoGrabFromHoppers>true</autoGrabFromHoppers>
         <autoInputSlots>
-            <li>(1,0,3)</li>
             <li>(-1,0,3)</li>
-            <li>(-3,0,0)</li>
-            <li>(3,0,0)</li>
+            <li>(0,0,3)</li>
+            <li>(1,0,3)</li>
         </autoInputSlots>
-        <!--<ticks>WorkToMake*4</ticks>-->
-        <!--<ingredients>
-            <li>
-                <thingCategory>Leathery or Fabric</thingCategory>
-                <countNeeded>costList</countNeeded>
-                
-            </li>
-        </ingredients>-->
-        <!--<results>
-            <li>
-                <thing>Specific item</thing>
-                <count>1</count>		
-            </li>
-        </results>-->
         <isFactoryProcess>true</isFactoryProcess>
         <autoExtract>true</autoExtract>
         <onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
@@ -43,5 +26,5 @@ Have to create custom def for new input slots
         <maxOutputCount>3</maxOutputCount>
     </MassProductionExpansion.ProcessorTemplateDef>
 
-    
+
 </Defs>

@@ -13,16 +13,17 @@ public class ImpliedVehicles
             (x.costStuffCount != 0 || x.costList != null)
             //Assembling station only has 4 ports
             && x.costList?.Count < 5
-            && x.recipeMaker?.recipeUsers?.Contains(InternalDefOf.VVE_GarageBench) == true &&
+            && x.recipeMaker?.recipeUsers?.Contains(MPEDefOf.VVE_GarageBench) == true &&
             !x.defName.Contains("Shell")).ToList();
 
-        MassProductionExpansion.AssemblerCount = FactoryDefOf.VFEFactory_AutomatedAssembler
+        int assemblerCount = FactoryDefOf.VFEFactory_AutomatedAssembler
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>()
             .processes.Count;
+        
         foreach (ThingDef def in garageBenchRecipes) {
             yield return Generator.Fabrication.ProcessFromFabricationRecipe("MPE_Factory_Assembler_", 4,
-                FactoryDefOf.VFEFactory_Assembler_, def, ++MassProductionExpansion.FabricatorCount,
-                FactoryDefOf.VFEFactory_AutomatedAssembler,
+                MPEDefOf.MPE_Assembler_, def, ++assemblerCount,
+                MPEDefOf.MPE_HiTechAutomatedAssembler,
                 hotReload);
         }
     }

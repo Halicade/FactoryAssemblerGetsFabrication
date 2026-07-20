@@ -57,6 +57,10 @@
           <HintPath>..\..\..\..\..\workshop\content\294100\3686924415\1.6\Assemblies\VanillaFurnitureExpandedFactory.dll</HintPath>
           <Private>False</Private>
         </Reference>
+        <Reference Include="VEF">
+          <HintPath>..\..\..\..\..\workshop\content\294100\2023507013\1.6\Assemblies\VEF.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
     </ItemGroup>
 
     <!-- The below condition will check if you've defined a reference called "Assembly-CSharp" and if that reference exists on disk.
