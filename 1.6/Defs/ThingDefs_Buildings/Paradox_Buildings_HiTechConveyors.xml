@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef Name="MPE_HiTechConveyorBase" Abstract="True" ParentName="BuildingBase">
+		<tickerType>Normal</tickerType>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<size>(1,1)</size>
+		<drawStyleCategory>Walls</drawStyleCategory>
+		<rotatable>true</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>42</pathCost>
+		<fillPercent>0.5</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<containedItemsSelectable>true</containedItemsSelectable>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<researchPrerequisites>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+		<modExtensions>
+			<li Class="PipeSystem.FactoryHopperExtension">
+				<isfactoryHopper>true</isfactoryHopper>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="MPE_HiTechConveyorBase">
+		<defName>MPE_HiTechConveyor</defName>
+		<label>hi-Tech Conveyor</label>
+		<description>A high quality conveyor belt capable of moving an item from one place to the other. Due to safety reasons, items on the conveyor belt cannot be interacted with.</description>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_Conveyor</thingClass>
+		<inspectorTabs>
+			<li>VanillaFurnitureExpandedFactory.ITab_SplitterFilter</li>
+		</inspectorTabs>
+		<graphicData>
+			<texPath>Things/Building/HiTechConveyorBelts/Conveyor</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>1300</WorkToBuild>
+		</statBases>
+		<costList>
+			<Plasteel>10</Plasteel>
+		</costList>
+		<modExtensions>
+			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
+				<baseTexPath>Things/Building/HiTechConveyorBelts</baseTexPath>
+				<ticksPerCell>20</ticksPerCell>
+				<itemsPerCell>1</itemsPerCell>
+			</li>
+		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_Conveyor</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>MPE_HiTechUndergroundConveyorEntrance</li>
+				<li>MPE_HiTechUndergroundConveyorExit</li>
+			</relatedBuildCommands>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="MPE_HiTechConveyorBase">
+		<defName>MPE_HiTechUndergroundConveyorEntrance</defName>
+		<label>hi-Tech underground conveyor entrance</label>
+		<description>A high quality entrance tunnel for the conveyor belt, allowing it to travel a short distance underground. Needs to be linked to a nearby underground conveyor exit to work.</description>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_UndergroundConveyorEntrance</thingClass>
+		<graphicData>
+			<texPath>Things/Building/HiTechUndergroundConveyorEntrance/ConveyorUndergroundEntrance</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>1600</WorkToBuild>
+		</statBases>
+		<costList>
+			<Plasteel>20</Plasteel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<modExtensions>
+			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
+				<ticksPerCell>20</ticksPerCell>
+				<itemsPerCell>1</itemsPerCell>
+				<maxDistance>16</maxDistance>
+			</li>
+		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_UndergroundConveyorLink</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>MPE_HiTechConveyor</li>
+				<li>MPE_HiTechUndergroundConveyorExit</li>
+			</relatedBuildCommands>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="MPE_HiTechConveyorBase">
+		<defName>MPE_HiTechUndergroundConveyorExit</defName>
+		<label>hi-Tech underground conveyor exit</label>
+		<description>A high quality exit tunnel for the conveyor belt, allowing it to travel a short distance underground. Needs to be linked to a nearby underground conveyor entrance to work.</description>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_UndergroundConveyorExit</thingClass>
+		<graphicData>
+			<texPath>Things/Building/HiTechUndergroundConveyorExit/ConveyorUndergroundExit</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>1600</WorkToBuild>
+		</statBases>
+		<costList>
+			<Plasteel>20</Plasteel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<modExtensions>
+			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
+				<ticksPerCell>20</ticksPerCell>
+				<itemsPerCell>1</itemsPerCell>
+				<maxDistance>16</maxDistance>
+			</li>
+		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_UndergroundConveyorLink</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>MPE_HiTechConveyor</li>
+				<li>MPE_HiTechUndergroundConveyorEntrance</li>
+			</relatedBuildCommands>
+		</building>
+	</ThingDef>
+</Defs>

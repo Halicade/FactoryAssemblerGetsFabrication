@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TerrainAffordanceDef>
+    <defName>MPE_SterileTile</defName>
+    <label>Sterile Tile</label>
+    <order>3700</order>
+  </TerrainAffordanceDef>
+
+</Defs>

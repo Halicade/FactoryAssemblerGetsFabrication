@@ -6,15 +6,15 @@ namespace MassProductionExpansion;
 [StaticConstructorOnStartup]
 public static class GraphicsCache
 {
-    public static readonly Graphic_Multi hopperNormal = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
+    public static readonly Graphic_Multi T2HopperNormal = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
         "Things/Building/HiTechFactoryHopper/FactoryHopper_Unset", ShaderDatabase.CutoutComplex,
         new Vector2(1.05f, 1.05f), Color.white);
 
-    public static readonly Graphic_Multi hopperInput = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
+    public static readonly Graphic_Multi T2HopperInput = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
         "Things/Building/HiTechFactoryHopper/FactoryHopper_Input", ShaderDatabase.CutoutComplex,
         new Vector2(1.05f, 1.05f), Color.white);
 
-    public static readonly Graphic_Multi hopperOutput = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
+    public static readonly Graphic_Multi T2HopperOutput = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
         "Things/Building/HiTechFactoryHopper/FactoryHopper_Output", ShaderDatabase.CutoutComplex,
         new Vector2(1.05f, 1.05f), Color.white);
 

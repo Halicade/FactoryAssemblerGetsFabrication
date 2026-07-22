@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <ResearchProjectDef>
+    <defName>MPE_HiTechFactories</defName>
+    <label>Hi-Tech Factories</label>
+    <description>Construct extremely complex and expensive Spacer tier factories for general and specific purposes, as well as improved logistics.</description>
+    <baseCost>10000</baseCost>
+    <techLevel>Spacer</techLevel>
+    	<prerequisites>
+    		<li>VFE_ComplexFactories</li>
+    		<li>AdvancedFabrication</li>
+    	</prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <researchViewX>7.00</researchViewX>
+    <researchViewY>4.25</researchViewY>
+    <tab>VanillaExpanded</tab>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>MPE_SmartFactories</defName>
+    <label>Smart Factories</label>
+    <description>Construct excessively advanced Ultratech factories managed by individual sub-persona intelligence for per the hour manufacturing.</description>
+    <baseCost>20000</baseCost>
+    <techLevel>Ultra</techLevel>
+    	<prerequisites>
+    		<li>MPE_HiTechFactories</li>
+    		<li>AdvancedFabrication</li>
+    	</prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <researchViewX>8.00</researchViewX>
+    <researchViewY>4.25</researchViewY>
+    <tab>VanillaExpanded</tab>
+  </ResearchProjectDef>
+  
+</Defs>

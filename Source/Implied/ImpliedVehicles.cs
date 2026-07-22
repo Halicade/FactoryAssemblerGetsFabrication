@@ -16,7 +16,7 @@ public class ImpliedVehicles
             && x.recipeMaker?.recipeUsers?.Contains(MPEDefOf.VVE_GarageBench) == true &&
             !x.defName.Contains("Shell")).ToList();
 
-        int assemblerCount = FactoryDefOf.VFEFactory_AutomatedAssembler
+        int assemblerCount = MPEDefOf.MPE_HiTechAutomatedAssembler
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>()
             .processes.Count;
         

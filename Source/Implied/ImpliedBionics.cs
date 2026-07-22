@@ -16,13 +16,13 @@ public class ImpliedBionics
             && x.recipeMaker?.recipeUsers?.Contains(MPEDefOf.FSFBionicsTable) == true &&
             !x.defName.Contains("Shell")).ToList();
 
-        int fabricatorCount = FactoryDefOf.VFEFactory_AutomatedAssembler
+        int fabricatorCount = MPEDefOf.MPE_HiTechAutomatedAssembler
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>()
             .processes.Count;
         foreach (ThingDef def in FSFBionicRecipes) {
             yield return Generator.Fabrication.ProcessFromFabricationRecipe("MPE_Factory_AssemblerT1_", 4,
                 MPEDefOf.MPE_Assembler_, def, ++fabricatorCount,
-                FactoryDefOf.VFEFactory_AutomatedAssembler,
+                MPEDefOf.MPE_HiTechAutomatedAssembler,
                 hotReload);
         }
     }

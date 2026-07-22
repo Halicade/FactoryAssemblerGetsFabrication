@@ -35,7 +35,7 @@ public static class Medicine
             foreach (var cost in def.costList) {
                 ingredientList.Add(new ProcessDef.Ingredient {
                     thing = cost.thingDef,
-                    countNeeded = cost.count * 4
+                    countNeeded = cost.count * def.recipeMaker.bulkRecipeCount
                 });
             }
 

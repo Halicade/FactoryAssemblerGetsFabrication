@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedDrillPlatform</defName>
 		<label>hi-Tech drill platform</label>
-		<description>An automated deep-crust drilling rig for extracting minerals from deep under the surface. Capable of extracting stone chunks, but also any metal it finds.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption.</description>
+		<description>An automated hi-tech deep-crust drilling rig for extracting minerals from deep under the surface. Capable of extracting stone chunks, but also any metal it finds.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedDrillPlatform/HiTechAutomatedDrillPlatform</texPath>
@@ -20,8 +20,8 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>220</Steel>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<Plasteel>220</Plasteel>
+			<ComponentSpacer>10</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
@@ -37,9 +37,9 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -48,11 +48,11 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -63,18 +63,31 @@
 			<li>PipeSystem.ITab_Processor</li>
 		</inspectorTabs>
 		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>10.0</fuelConsumptionRate>
+				<fuelCapacity>20.0</fuelCapacity>
+				<fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+				<fuelFilter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</fuelFilter>
+				<initialFuelPercent>1</initialFuelPercent>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+				<functionsInVacuum>false</functionsInVacuum>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>false</shortCircuitInRain>
-				<basePowerConsumption>300</basePowerConsumption>
+				<basePowerConsumption>1200</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>9</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-9</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -102,7 +115,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedSmelter</defName>
 		<label>hi-Tech smelter</label>
-		<description>Extracts usable metal from slag chunks, broken-down weapons, apparel, stone chunks, and mechanoid corpses using strong electromagnets and heat.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>Extracts usable metal from slag chunks, broken-down weapons, apparel, stone chunks, and mechanoid corpses using strong electromagnets and heat.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedSmelter/HiTechAutomatedSmelter</texPath>
@@ -119,14 +132,14 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>260</Steel>
-			<ComponentIndustrial>7</ComponentIndustrial>
+			<Plasteel>260</Plasteel>
+			<ComponentSpacer>7</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<uiIconScale>0.8</uiIconScale>
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
@@ -137,7 +150,7 @@
 			<MaxHitPoints>450</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -148,11 +161,11 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -167,15 +180,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>300</basePowerConsumption>
+				<basePowerConsumption>600</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>14</heatPerSecond>
-				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+				<heatPerSecond>-14</heatPerSecond>
+				<heatPushMinTemperature>-120</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -202,7 +215,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedBiofuelRefinery</defName>
 		<label>hi-Tech biofuel refinery</label>
-		<description>Automatically refines biological matter like wood or plant matter into chemfuel.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>Automatically refines biological matter like wood or plant matter into chemfuel.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedBiofuelRefinery/HiTechAutomatedBiofuelRefinery</texPath>
@@ -219,12 +232,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>200</Steel>
-			<ComponentIndustrial>4</ComponentIndustrial>
+			<Plasteel>200</Plasteel>
+			<ComponentSpacer>4</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -237,7 +250,7 @@
 			<MaxHitPoints>450</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -248,12 +261,12 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 			<li>BiofuelRefining</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -268,15 +281,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>220</basePowerConsumption>
+				<basePowerConsumption>440</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>9</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-9</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -288,7 +301,7 @@
 				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
-					
+
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
@@ -307,7 +320,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedMasonrySaw</defName>
 		<label>hi-Tech masonry saw</label>
-		<description>An industrial machine capable of cutting stone chunks into usable blocks.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>An industrial machine capable of cutting stone chunks into usable blocks.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedMasonrySaw/HiTechAutomatedMasonrySaw</texPath>
@@ -324,12 +337,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>180</Steel>
-			<ComponentIndustrial>3</ComponentIndustrial>
+			<Plasteel>180</Plasteel>
+			<ComponentSpacer>3</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -342,7 +355,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -353,12 +366,12 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 			<li>Stonecutting</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -373,15 +386,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>150</basePowerConsumption>
+				<basePowerConsumption>300</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>7</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-7</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -408,7 +421,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedMincer</defName>
 		<label>hi-Tech mincer</label>
-		<description>A series of automated saws and mincers capable of processing corpses into processed mince.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>A series of automated saws and mincers capable of processing corpses into processed mince.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedMincer/HiTechAutomatedMincer</texPath>
@@ -425,12 +438,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>200</Steel>
-			<ComponentIndustrial>4</ComponentIndustrial>
+			<Plasteel>200</Plasteel>
+			<ComponentSpacer>4</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -443,7 +456,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -454,11 +467,11 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -473,15 +486,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>200</basePowerConsumption>
+				<basePowerConsumption>400</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>7</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-7</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -508,7 +521,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechConveyorOven</defName>
 		<label>hi-Tech conveyor oven</label>
-		<description>An industrial oven for the automated mass-production of simple, shelf-stable, and packaged meals.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>A Hi-Tech autonomous oven for the automated mass-production of various simple and fine meals, as well as processed meals and survival meals.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechConveyorOven/HiTechConveyorOven</texPath>
@@ -525,12 +538,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>240</Steel>
-			<ComponentIndustrial>6</ComponentIndustrial>
+			<Plasteel>240</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -543,7 +556,7 @@
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
@@ -554,11 +567,11 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -573,15 +586,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>460</basePowerConsumption>
+				<basePowerConsumption>920</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>9</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-9</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -611,7 +624,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedAssembler</defName>
 		<label>hi-Tech assembler</label>
-		<description>An automated industrial machine for assembling complex items like components and advanced components.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>A Hi-Tech autonomous machine for assembling numerous complex objects, from components to power armor to bionics and Hi-Tech weaponry.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedAssembler/HiTechAutomatedAssembler</texPath>
@@ -628,13 +641,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>400</Steel>
-			<ComponentIndustrial>20</ComponentIndustrial>
-			<ComponentSpacer>6</ComponentSpacer>
+			<Plasteel>400</Plasteel>
+			<ComponentSpacer>26</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -646,7 +658,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>800</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
@@ -657,11 +669,11 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_ComplexFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -676,15 +688,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>450</basePowerConsumption>
+				<basePowerConsumption>900</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>10</heatPerSecond>
-				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+				<heatPerSecond>-10</heatPerSecond>
+				<heatPushMinTemperature>-120</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -711,7 +723,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechNeutroamineSynthesizer</defName>
 		<label>hi-Tech neutroamine synthesizer</label>
-		<description>An advanced chemical facility designed for the automated synthesis of neutroamine from organic feedstocks. It operates by converting rendered animal fat and chemfuel into neutroamine.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>An advanced chemical facility designed for the automated synthesis of neutroamine from organic feedstocks. It operates by converting rendered animal fat and chemfuel into neutroamine.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechNeutroamineSynthesizer/HiTechNeutroamineSynthesizer</texPath>
@@ -728,14 +740,13 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>260</Steel>
-			<ComponentIndustrial>8</ComponentIndustrial>
-			<ComponentSpacer>4</ComponentSpacer>
+			<Plasteel>260</Plasteel>
+			<ComponentSpacer>12</ComponentSpacer>
 			<Silver>30</Silver>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -747,7 +758,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
@@ -758,11 +769,11 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_ComplexFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -777,15 +788,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>600</basePowerConsumption>
+				<basePowerConsumption>1200</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>9</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-9</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -815,7 +826,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedAmmunitionPress</defName>
 		<label>hi-Tech ammunition press</label>
-		<description>An industrial-grade press capable of automatically manufacturing various artillery shells from raw materials.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>A Hi-Tech autonomous press capable of automatically manufacturing various artillery shells from raw materials.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedAmmunitionPress/HiTechAutomatedAmmunitionPress</texPath>
@@ -832,12 +843,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>220</Steel>
-			<ComponentIndustrial>8</ComponentIndustrial>
+			<Plasteel>220</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -849,7 +860,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>400</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -860,11 +871,11 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -879,15 +890,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>400</basePowerConsumption>
+				<basePowerConsumption>800</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>6</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-6</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -917,7 +928,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutoloom</defName>
 		<label>hi-Tech autoloom</label>
-		<description>An industrial-grade loom designed for the automatic production of textiles and apparel, it efficiently weaves materials like cloth and leather into various finished goods. It can only output goods of normal quality.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>A Hi-Tech autonomous loom designed for the automatic production of textiles and apparel, it efficiently weaves materials like cloth and leather into various finished goods. It can only output goods of normal quality.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutoloom/HiTechAutoloom</texPath>
@@ -934,12 +945,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>200</Steel>
-			<ComponentIndustrial>8</ComponentIndustrial>
+			<Plasteel>200</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -951,7 +962,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>500</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
@@ -962,11 +973,11 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -981,15 +992,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>250</basePowerConsumption>
+				<basePowerConsumption>500</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>6</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-6</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -1020,7 +1031,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedAlloyForge</defName>
 		<label>hi-Tech alloy forge</label>
-		<description>A colossal industrial furnace built to contain the immense heat and pressure needed to bond base materials into exotic alloys like plasteel.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>A colossal spacer furnace built to contain the immense heat and pressure needed to bond base materials into exotic alloys like plasteel.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedAlloyForge/HiTechAutomatedAlloyForge</texPath>
@@ -1037,13 +1048,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>460</Steel>
-			<ComponentIndustrial>14</ComponentIndustrial>
-			<ComponentSpacer>4</ComponentSpacer>
+			<Plasteel>460</Plasteel>
+			<ComponentSpacer>18</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -1055,7 +1065,7 @@
 			<WorkToBuild>8000</WorkToBuild>
 			<MaxHitPoints>900</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
@@ -1066,11 +1076,11 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_ComplexFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -1085,15 +1095,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>500</basePowerConsumption>
+				<basePowerConsumption>1000</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>21</heatPerSecond>
-				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+				<heatPerSecond>-21</heatPerSecond>
+				<heatPushMinTemperature>-120</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -1123,7 +1133,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedDistillery</defName>
 		<label>hi-Tech distillery</label>
-		<description>An automated industrial distilling system for the mass production of beer and spirits from raw crops, requiring no manual labor.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power. Needs to be constructed on factory floor.</description>
+		<description>A Hi-Tech autonomous distilling system for the mass production of beer and spirits from raw crops, requiring no manual labor.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedDistillery/HiTechAutomatedDistillery</texPath>
@@ -1140,12 +1150,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>160</Steel>
-			<ComponentIndustrial>6</ComponentIndustrial>
+			<Plasteel>160</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -1167,11 +1177,11 @@
 		<interactionCellOffset>(1,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_ComplexFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -1186,12 +1196,12 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>150</basePowerConsumption>
+				<basePowerConsumption>300</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>CompHeatPusherPowered</compClass>
-				<heatPerSecond>7</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-7</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -1212,7 +1222,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechMedicineGranulator</defName>
 		<label>hi-Tech medicine granulator</label>
-		<description>An advanced pharmaceutical processor for the mass-production of basic medical supplies and drug batches from raw materials. It efficiently grinds, synthesizes, and packages items like medicine, psychite drugs, and smokeleaf joints.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>An advanced pharmaceutical processor for the mass-production of all medical supplies and drug batches from raw materials. It efficiently grinds, synthesizes, and packages items like medicine, psychite drugs, and smokeleaf joints.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechMedicineGranulator/HiTechMedicineGranulator</texPath>
@@ -1229,13 +1239,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>200</Steel>
-			<ComponentIndustrial>4</ComponentIndustrial>
-			<ComponentSpacer>8</ComponentSpacer>
+			<Plasteel>200</Plasteel>
+			<ComponentSpacer>12</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -1247,7 +1256,7 @@
 			<WorkToBuild>6500</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
@@ -1258,11 +1267,11 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_ComplexFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -1277,15 +1286,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>800</basePowerConsumption>
+				<basePowerConsumption>1600</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>9</heatPerSecond>
-				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+				<heatPerSecond>-9</heatPerSecond>
+				<heatPushMinTemperature>-66</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -1315,7 +1324,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedMachiningBay</defName>
 		<label>hi-Tech machining bay</label>
-		<description>An automated industrial facility designed for the precision manufacturing of various weapons, armor, and complex equipment. It can only output goods of normal quality.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>A Hi-Tech autonomous facility designed for the precision manufacturing of various weapons, armor, and complex equipment. It can only output goods of normal quality.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedMachiningBay/HiTechAutomatedMachiningBay</texPath>
@@ -1332,13 +1341,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>440</Steel>
-			<ComponentIndustrial>18</ComponentIndustrial>
-			<ComponentSpacer>5</ComponentSpacer>
+			<Plasteel>440</Plasteel>
+			<ComponentSpacer>23</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -1350,7 +1358,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>800</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
@@ -1361,11 +1369,11 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_ComplexFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -1380,15 +1388,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>500</basePowerConsumption>
+				<basePowerConsumption>1000</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>10</heatPerSecond>
-				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+				<heatPerSecond>-10</heatPerSecond>
+				<heatPushMinTemperature>-120</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
@@ -1418,7 +1426,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedCrematorium</defName>
 		<label>hi-Tech conveyor crematorium</label>
-		<description>An industrial-grade furnace designed for the automated destruction of unwanted items, especially corpses and tainted apparel, using extreme heat.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<description>A Hi-Tech autonomous furnace designed for the automated destruction of unwanted items, especially corpses and tainted apparel, using extreme heat.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechConveyorCrematorium/HiTechConveyorCrematorium</texPath>
@@ -1435,12 +1443,12 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>260</Steel>
-			<ComponentIndustrial>6</ComponentIndustrial>
+			<Plasteel>260</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
-		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
@@ -1452,7 +1460,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -1463,11 +1471,11 @@
 
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>VFEFactory_FactoryHopper</li>
+				<li>MPE_HiTechFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
@@ -1482,15 +1490,15 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>250</basePowerConsumption>
+				<basePowerConsumption>500</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>12</heatPerSecond>
-				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+				<heatPerSecond>-12</heatPerSecond>
+				<heatPushMinTemperature>-120</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
