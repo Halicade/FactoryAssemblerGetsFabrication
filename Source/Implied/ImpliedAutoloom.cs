@@ -3,7 +3,6 @@ using System.Linq;
 using MassProductionExpansion.Defs;
 using MassProductionExpansion.Generator;
 using PipeSystem;
-using VanillaFurnitureExpandedFactory;
 using Verse;
 using InternalDefOf = VanillaFurnitureExpandedFactory.InternalDefOf;
 

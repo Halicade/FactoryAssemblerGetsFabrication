@@ -9,12 +9,7 @@ public class MPEDefOf
     public static ThingDef FabricationBench;
 
     public static ThingDef DrugLab;
-    public static ThingDef BiofuelRefinery;
-    public static ThingDef ElectricSmithy;
-    public static ThingDef FueledSmithy;
-
-
-    public static ThingDef MPE_T2AutomatedMasonrySaw;
+    
     public static ThingDef MPE_HiTechAutomatedDrillPlatform;
     public static ThingDef MPE_HiTechAutomatedSmelter;
     public static ThingDef MPE_HiTechAutomatedBiofuelRefinery;
@@ -33,7 +28,6 @@ public class MPEDefOf
     
     public static ProcessorTemplateDef MPE_Assembler_;
     public static ProcessorTemplateDef MPE_Medicine_;
-    public static ProcessorTemplateDef MPE_Biofuel_;
 
 
     //Required so the game doesn't yell at you if not loaded

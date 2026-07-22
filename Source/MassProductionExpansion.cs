@@ -48,9 +48,8 @@ public class MassProductionExpansion : Mod
         foreach (PipeSystem.ProcessDef item in ImpliedAutoloom.ImpliedAutoloomProcesses(hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
         }
-
-        //VE factory 
-        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_Assembler", 0.5f,
+        
+        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Assembler", 0.5f,
                      FactoryDefOf.VFEFactory_AutomatedAssembler,
                      MPEDefOf.MPE_HiTechAutomatedAssembler, hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
@@ -63,11 +62,11 @@ public class MassProductionExpansion : Mod
         foreach (var item in ImpliedMedicine.ImpliedMedicineProcesses(hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
         }
-        /*
-        foreach (var item in ImpliedSmelter.ImpliedSmeltingProcesses(hotReload)) {
+        
+        foreach (var item in ImpliedStone.ImpliedStoneProcesses(hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
         }
-*/
+
         if (ModLister.AnyModActiveNoSuffix(["oskarpotocki.vanillavehiclesexpanded"])) {
             foreach (PipeSystem.ProcessDef item in ImpliedVehicles.ImpliedGarageProcesses(hotReload)) {
                 DefGenerator.AddImpliedDef(item, hotReload);
@@ -80,20 +79,19 @@ public class MassProductionExpansion : Mod
             }
         }
 
-        /* Taking this one out for now
-        foreach (var item in ImpliedUpgrader.ImpliedMasonryButcherProcess(hotReload)) {
+        // Upgrades
+        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Masonry", 0.75f,
+                     FactoryDefOf.VFEFactory_AutomatedMasonrySaw,
+                     MPEDefOf.MPE_HiTechAutomatedMasonrySaw, hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
         }
-        */
+        
+        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Mincer", 0.75f,
+                     FactoryDefOf.VFEFactory_AutomatedMincer,
+                     MPEDefOf.MPE_HiTechAutomatedMincer, hotReload)) {
+            DefGenerator.AddImpliedDef(item, hotReload);
+        }
 
-        /*
-         
-        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Drill", 0.75f,
-                     FactoryDefOf.VFEFactory_AutomatedDrillPlatform,
-                     MPEDefOf.MPE_HiTechAutomatedDrillPlatform, hotReload)) {
-            DefGenerator.AddImpliedDef(item, hotReload);
-        }
-        */
 
         foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Smelt", 0.75f,
                      FactoryDefOf.VFEFactory_AutomatedSmelter,
@@ -106,8 +104,6 @@ public class MassProductionExpansion : Mod
                      MPEDefOf.MPE_HiTechConveyorOven, hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
         }
-        
-
         
         foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Neutroamine", 0.75f,
                      FactoryDefOf.VFEFactory_NeutroamineSynthesizer,
@@ -157,11 +153,11 @@ public class MassProductionExpansion : Mod
                      MPEDefOf.MPE_HiTechAutomatedCrematorium, hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
         }
-
-/*
-        InternalDefs.MyNewMachine.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes
-            = InternalDefOf.VFEFactory_AutomatedMachiningBay
-                .GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes;
-                */
+        
+        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Refinery", 0.75f,
+                     FactoryDefOf.VFEFactory_AutomatedBiofuelRefinery,
+                     MPEDefOf.MPE_HiTechAutomatedBiofuelRefinery, hotReload)) {
+            DefGenerator.AddImpliedDef(item, hotReload);
+        }
     }
 }

@@ -24,6 +24,8 @@ public class FactoryDefOf
     public static ThingDef VFEFactory_AutomatedDistillery;
     public static ThingDef VFEFactory_AutomatedMachiningBay;
     public static ThingDef VFEFactory_AutomatedCrematorium;
+
+    public static SoundDef VFEFactory_AutomatedDrillSustainer;
     
 
     static FactoryDefOf() {

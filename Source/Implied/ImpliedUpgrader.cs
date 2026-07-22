@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MassProductionExpansion.Defs;
 using MassProductionExpansion.Generator;
 using PipeSystem;
 using Verse;
@@ -10,7 +9,7 @@ namespace MassProductionExpansion.Implied;
 public class ImpliedUpgrader
 {
     public static int MasonryButcherCounter = 0;
-
+/*
     public static IEnumerable<PipeSystem.ProcessDef> ImpliedMasonryButcherProcess(bool hotReload = false) {
         List<ProcessDef> masonryRecipes = FactoryDefOf.VFEFactory_AutomatedMasonrySaw
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes;
@@ -28,7 +27,7 @@ public class ImpliedUpgrader
                 hotReload: hotReload);
         }
     }
-
+*/
     public static IEnumerable<ProcessDef> ImpliedGenericProcess(string prefix, float tickMultiplier, ThingDef defBeingUpgraded,
         ThingDef buildingGettingUpgrades, bool hotReload = false) {
         List<ProcessDef> upgradeableRecipes= defBeingUpgraded.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes

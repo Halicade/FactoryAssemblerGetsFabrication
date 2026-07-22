@@ -6,7 +6,7 @@
         <label>Dig for metals</label>
         <labelOverride>Dig for metals</labelOverride>
         <description>Dig for random metals. Type of metal extracted depends on the deep commonality of the resource. The amount depends on the usual yield of such a deposit.</description>
-        <priorityInBillList>10</priorityInBillList>
+        <priorityInBillList>0</priorityInBillList>
         <spawnOnInteractionCell>true</spawnOnInteractionCell>
         <ticks>23775</ticks>
         <results>

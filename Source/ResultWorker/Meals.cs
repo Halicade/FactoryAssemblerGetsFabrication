@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MassProductionExpansion.ModExtension;
 using PipeSystem;
 using RimWorld;
-using Verse;
 
 namespace MassProductionExpansion.ResultWorker;
 
