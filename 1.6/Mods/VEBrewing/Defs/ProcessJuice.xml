@@ -4,18 +4,33 @@
     Two processes with the same defName. Only one will be used depending on which mods are loaded.
     This one uses base game berries
     -->
-    <PipeSystem.ProcessDef ParentName="MPE_GenericMealBase">
+    <PipeSystem.ProcessDef>
         <defName>MPE_T2_FruitJuice</defName>
         <label>Make juice</label>
         <description>Process and squeeze fruits to produce juice.</description>
-        <priorityInBillList>2</priorityInBillList>
+        <spawnOnInteractionCell>true</spawnOnInteractionCell>
+        <autoGrabFromHoppers>true</autoGrabFromHoppers>
+        <useIngredients>true</useIngredients>
+        <autoInputSlots>
+            <li>(-1,0,2)</li>
+        </autoInputSlots>
+        <isFactoryProcess>true</isFactoryProcess>
+        <autoExtract>true</autoExtract>
+        <onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+        <sustainerWhenWorking>true</sustainerWhenWorking>
+        <sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
+        <effecterWhenWorking>true</effecterWhenWorking>
+        <effecterDef>VFEFactory_Cook</effecterDef>
+        <maxOutputCount>20</maxOutputCount>
+
+        <priorityInBillList>0</priorityInBillList>
         <ticks>3600</ticks>
         <ingredients>
             <li>
                 <thing>RawBerries</thing>
                 <countNeeded>25</countNeeded>
             </li>
-        </ingredients><!-- TODO transfer ingredients-->
+        </ingredients>
         <results>
             <li>
                 <thing>VBE_Juice</thing>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+<PipeSystem.ProcessDef>
+		<defName>VFEFactory_Idkhoneylol</defName>
+		<label>Make honey</label>
+		<labelOverride>Make honey</labelOverride>
+		<description>Produce honey autonomously in a climate controlled environment for accelerated production, producing seventy-five honey every two days.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<useIngredients>true</useIngredients>
+		<ticks>120000</ticks>
+		<ingredients>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VFEM2_Honey</thing>
+				<count>75</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+			<li>VFEM2_Beekeeping</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<maxOutputCount>75</maxOutputCount>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
+	</PipeSystem.ProcessDef>
+
+</Defs>

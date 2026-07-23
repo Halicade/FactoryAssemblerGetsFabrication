@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+<PipeSystem.ProcessDef>
+		<defName>VFEFactory_CheesePress</defName>
+		<label>Make cheese</label>
+		<labelOverride>Make cheese</labelOverride>
+		<description>Produce honey autonomously in a climate controlled environment for accelerated production, producing seventy-five honey every two days.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,-3)</li>
+			<li>(1,0,-3)</li>
+			<li>(-1,0,-3)</li>
+			</autoInputSlots>
+		<useIngredients>true</useIngredients>
+		<ticksQuality>
+			<li>300000</li>
+			<li>420000</li>
+			<li>720000</li>
+			<li>1020000</li>
+			<li>1200000</li>
+			<li>1320000</li>
+			<li>2220000</li>
+		</ticksQuality>
+		<ingredients>
+			<li>
+				<thing>Milk</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_Cheese</thing>
+				<count>75</count>
+			</li>
+		</results>
+		<stopAtQuality>true</stopAtQuality>
+		<allowExtractAtCurrentQuality>true</allowExtractAtCurrentQuality>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+			<li>VCE_CheeseMaking</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<maxOutputCount>75</maxOutputCount>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
+	</PipeSystem.ProcessDef>
+
+</Defs>
