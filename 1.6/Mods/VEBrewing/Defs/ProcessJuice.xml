@@ -24,27 +24,22 @@
         <maxOutputCount>20</maxOutputCount>
 
         <priorityInBillList>0</priorityInBillList>
-        <ticks>3600</ticks>
+        <ticks>800</ticks>
         <ingredients>
             <li>
                 <thing>RawBerries</thing>
-                <countNeeded>25</countNeeded>
+                <countNeeded>40</countNeeded>
             </li>
         </ingredients>
         <results>
             <li>
                 <thing>VBE_Juice</thing>
-                <count>20</count>
+                <count>35</count>
             </li>
         </results>
         <researchPrerequisites>
             <li>PackagedSurvivalMeal</li>
             <li>VFE_BasicFactories</li>
         </researchPrerequisites>
-        <modExtensions>
-            <li Class="MassProductionExpansion.ModExtension.nutritionChanger">
-                <nutritionToMake>50</nutritionToMake>
-            </li>
-        </modExtensions>
     </PipeSystem.ProcessDef>
 </Defs>

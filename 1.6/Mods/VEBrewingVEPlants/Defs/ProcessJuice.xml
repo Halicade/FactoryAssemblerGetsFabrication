@@ -24,7 +24,7 @@
         <maxOutputCount>20</maxOutputCount>
         
         <priorityInBillList>0</priorityInBillList>
-        <ticks>3600</ticks>
+        <ticks>800</ticks>
         <ingredients>
             <li>
                 <thingCategory>VCE_Fruit</thingCategory>
@@ -34,18 +34,12 @@
         <results>
             <li>
                 <thing>VBE_Juice</thing>
-                <count>20</count>
-                <workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
+                <count>35</count>
             </li>
         </results>
         <researchPrerequisites>
             <li>PackagedSurvivalMeal</li>
             <li>VFE_BasicFactories</li>
         </researchPrerequisites>
-        <modExtensions>
-            <li Class="MassProductionExpansion.ModExtension.nutritionChanger">
-                <nutritionToMake>80</nutritionToMake>
-            </li>
-        </modExtensions>
     </PipeSystem.ProcessDef>
 </Defs>
