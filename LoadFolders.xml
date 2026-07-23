@@ -2,8 +2,11 @@
 	<v1.6>
 		<li>/</li>
 		<li>1.6</li>
-		<li IfModActive="OskarPotocki.VFE.Medieval2">1.6/Mods/VanillaFactionsExpandedMedieval</li>
-		<li IfModActive="VanillaExpanded.VCookE">1.6/Mods/VanillaCookingExpanded</li>
+		<li IfModActive="OskarPotocki.VFE.Medieval2">1.6/Mods/VEMedieval</li>
+		<li IfModActive="VanillaExpanded.VCookE">1.6/Mods/VECooking</li>
+		<li IfModActiveAll="VanillaExpanded.VBrewE,VanillaExpanded.VPlantsE">1.6/Mods/VEBrewingVEPlants</li>
+		<li IfModActive="VanillaExpanded.VBrewE" IfModNotActive="VanillaExpanded.VPlantsE">1.6/Mods/VEBrewing</li>
+		
 	</v1.6>
 </loadFolders>
 

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Two processes with the same defName. Only one will be used depending on which mods are loaded.
+    This one uses the fruit categoryDef provided by VE Plants
+    -->
+    <PipeSystem.ProcessDef ParentName="MPE_GenericMealBase">
+        <defName>MPE_T2_FruitJuice</defName>
+        <label>Make juice</label>
+        <description>Process and squeeze fruits to produce juice.</description>
+        <priorityInBillList>2</priorityInBillList>
+        <ticks>3600</ticks>
+        <ingredients>
+            <li>
+                <thingCategory>VCE_Fruit</thingCategory>
+                <countNeeded>40</countNeeded>
+            </li>
+        </ingredients>
+        <results>
+            <li>
+                <thing>VBE_Juice</thing>
+                <count>20</count>
+                <workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
+            </li>
+        </results>
+        <researchPrerequisites>
+            <li>PackagedSurvivalMeal</li>
+            <li>VFE_BasicFactories</li>
+        </researchPrerequisites>
+        <modExtensions>
+            <li Class="MassProductionExpansion.ModExtension.nutritionChanger">
+                <nutritionToMake>80</nutritionToMake>
+            </li>
+        </modExtensions>
+    </PipeSystem.ProcessDef>
+</Defs>

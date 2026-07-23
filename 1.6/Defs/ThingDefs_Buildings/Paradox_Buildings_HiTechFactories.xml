@@ -1208,6 +1208,8 @@
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
+					<!-- Gets a different recipe depending on if Plants Expanded is active -->
+					<li MayRequire="vanillaexpanded.vbrewe">MPE_T2_FruitJuice</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
