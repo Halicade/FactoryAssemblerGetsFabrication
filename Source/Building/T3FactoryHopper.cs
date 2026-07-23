@@ -5,7 +5,7 @@ using Verse;
 
 namespace MassProductionExpansion.Building;
 
-public class T2FactoryHopper : Building_FactoryHopper
+public class T3FactoryHopper: Building_FactoryHopper
 {
     private Graphic currentGraphic;
 
@@ -13,20 +13,20 @@ public class T2FactoryHopper : Building_FactoryHopper
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad) {
         base.SpawnSetup(map, respawningAfterLoad);
-        currentGraphic = CheckForT2Factories();
+        currentGraphic = T3();
     }
 
 
     public override void TickLong() {
         //base.TickLong();
-        Graphic graphic = CheckForT2Factories();
+        Graphic graphic = T3();
         if (graphic != currentGraphic) {
             currentGraphic = graphic;
             Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
         }
     }
 
-    private Graphic CheckForT2Factories() {
+    private Graphic T3() {
         if (Map != null) {
             foreach (IntVec3 edgeCell in this.OccupiedRect().ExpandedBy(1).EdgeCells) {
                 if (!edgeCell.InBounds(Map)) {
@@ -46,7 +46,7 @@ public class T2FactoryHopper : Building_FactoryHopper
 
                     if (thing.def.hasInteractionCell &&
                         thing.Position + thing.def.interactionCellOffset.RotatedBy(thing.Rotation) == Position) {
-                        return GraphicsCache.T2HopperOutput;
+                        return GraphicsCache.T3HopperOutput;
                     }
 
                     if (compAdvancedResourceProcessor.Process == null ||
@@ -56,13 +56,13 @@ public class T2FactoryHopper : Building_FactoryHopper
 
                     foreach (IntVec3 autoInputSlot in compAdvancedResourceProcessor.Process.Def.autoInputSlots) {
                         if (thing.Position + autoInputSlot.RotatedBy(thing.Rotation) == Position) {
-                            return GraphicsCache.T2HopperInput;
+                            return GraphicsCache.T3HopperInput;
                         }
                     }
                 }
             }
         }
 
-        return GraphicsCache.T2HopperNormal;
+        return GraphicsCache.T3HopperNormal;
     }
 }

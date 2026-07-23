@@ -4,7 +4,7 @@
 		<defName>MPE_SmartFactoryHopper</defName>
 		<label>High Quality Factory hopper</label>
 		<description>High quality hoppers hold twice as many resources for use by factory machines.</description>
-		<thingClass>VanillaFurnitureExpandedFactory.Building_FactoryHopper</thingClass>
+		<thingClass>MassProductionExpansion.Building.T3FactoryHopper</thingClass>
 		<graphicData>
 			<texPath>Things/Building/SmartFactoryHopper/FactoryHopper_Unset</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>

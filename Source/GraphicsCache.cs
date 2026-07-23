@@ -17,6 +17,18 @@ public static class GraphicsCache
     public static readonly Graphic_Multi T2HopperOutput = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
         "Things/Building/HiTechFactoryHopper/FactoryHopper_Output", ShaderDatabase.CutoutComplex,
         new Vector2(1.05f, 1.05f), Color.white);
+    
+    public static readonly Graphic_Multi T3HopperNormal = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
+        "Things/Building/SmartFactoryHopper/FactoryHopper_Unset", ShaderDatabase.CutoutComplex,
+        new Vector2(1.05f, 1.05f), Color.white);
+
+    public static readonly Graphic_Multi T3HopperInput = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
+        "Things/Building/SmartFactoryHopper/FactoryHopper_Input", ShaderDatabase.CutoutComplex,
+        new Vector2(1.05f, 1.05f), Color.white);
+
+    public static readonly Graphic_Multi T3HopperOutput = (Graphic_Multi)GraphicDatabase.Get<Graphic_Multi>(
+        "Things/Building/SmartFactoryHopper/FactoryHopper_Output", ShaderDatabase.CutoutComplex,
+        new Vector2(1.05f, 1.05f), Color.white);
 
     public static readonly Texture2D GizmoMakeLink =
         ContentFinder<Texture2D>.Get("UI/Gizmo/UndergroundConveyor_MakeLink");
