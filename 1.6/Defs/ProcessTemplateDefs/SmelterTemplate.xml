@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <MassProductionExpansion.ProcessorTemplateDef>
+        <ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
+        <defName>MPE_Smelter_</defName>
+        <label>Make {0}</label>
+        <description>Make {0} out of the materials inserted.</description>
+        <!--<priorityInBillList>+</priorityInBillList>-->
+        <spawnOnInteractionCell>true</spawnOnInteractionCell>
+        <autoGrabFromHoppers>true</autoGrabFromHoppers>
+        <autoInputSlots>
+            <li>(0,0,3)</li>
+            <li>(1,0,3)</li>
+            <li>(-1,0,3)</li>
+        </autoInputSlots>
+        <isFactoryProcess>true</isFactoryProcess>
+        <autoExtract>true</autoExtract>
+        <onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+        <!--<useFirstIngredientAsOutputStuff>true</useFirstIngredientAsOutputStuff>-->
+        <disallowMixing>true</disallowMixing>
+        <sustainerWhenWorking>true</sustainerWhenWorking>
+        <sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+        <effecterWhenWorking>true</effecterWhenWorking>
+        <effecterDef>VFEFactory_Smelt</effecterDef>
+        <maxOutputCount>75</maxOutputCount>
+    </MassProductionExpansion.ProcessorTemplateDef>
+</Defs>

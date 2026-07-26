@@ -7,8 +7,12 @@ namespace MassProductionExpansion.Defs;
 public class MPEDefOf
 {
     public static ThingDef FabricationBench;
-
+    public static ThingDef ElectricSmithy;
+    public static ThingDef FueledSmithy;
     public static ThingDef DrugLab;
+
+    [MayRequire("ceteam.combatextended")]
+    public static StuffCategoryDef Steeled;
     
     // T2
     public static ThingDef MPE_HiTechAutomatedDrillPlatform;
@@ -47,6 +51,8 @@ public class MPEDefOf
     
     public static ProcessorTemplateDef MPE_Assembler_;
     public static ProcessorTemplateDef MPE_Medicine_;
+    public static ProcessorTemplateDef MPE_Smelter_;
+    public static ProcessorTemplateDef MPE_Machining_;
 
 
     //Required so the game doesn't yell at you if not loaded

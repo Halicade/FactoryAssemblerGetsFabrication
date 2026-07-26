@@ -6,7 +6,7 @@
     Multiply count by 20. That is countNeeded which goes in ingredients
     
     MassProductionExpansion.ModExtension.nutritionChanger
-    nutritionToMake is count times 2
+    nutritionToMake is total count times 2
     -->
     <PipeSystem.ProcessDef Name="MPE_GenericMealBase" Abstract="true">
         <spawnOnInteractionCell>true</spawnOnInteractionCell>
