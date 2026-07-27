@@ -609,6 +609,8 @@
 					<li>MPE_T2_MakeSurvivalMeal</li>
 					<li>MPE_T2_MakeSimpleMeal</li>
 					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeSimpleGrill</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeSimpleBake</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeFineBake</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>

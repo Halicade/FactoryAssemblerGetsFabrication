@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>MPE_MechUplink</defName>
+		<label>Factory Uplink System</label>
+		<description>A micro mechanoid swarm based farm accessory for smart factories, based on a persona core and a wealth of advanced components. When applicable, it increases the odds for higher quality goods to appear from factories, as well as providing minor amounts of overclocking. Only one works per factory connected.</description>
+		<graphicData>
+			<texPath>Things/Building/SmartLinkable/FactoryUplink/FactoryUplink</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.35</staticSunShadowHeight>
+		<fillPercent>0.5</fillPercent>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>50</pathCost>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>20000</WorkToBuild>
+			<Mass>30</Mass>
+			<Flammability>1</Flammability>
+			<Beauty>-4</Beauty>
+		</statBases>
+		<size>(4,4)</size>
+		<costList>
+			<Plasteel>60</Plasteel>
+			<ComponentSpacer>20</ComponentSpacer>
+		</costList>
+		<building>
+			<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+		</building>
+		<researchPrerequisites>
+			<li>MPE_SmartFactoryAddons</li>
+		</researchPrerequisites>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<comps>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+				<maxDistance>9.9</maxDistance>
+			</li>
+		</comps>
+		<designationHotKey>Misc6</designationHotKey>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+
+</Defs>

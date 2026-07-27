@@ -4,6 +4,7 @@ using RimWorld;
 using HarmonyLib;
 using MassProductionExpansion.Defs;
 using MassProductionExpansion.Implied;
+using PipeSystem;
 using VEF.Things;
 using Verse;
 
@@ -18,6 +19,10 @@ public class MassProductionExpansion : Mod
 
         harmony.Patch(AccessTools.Method(typeof(DefGenerator), "GenerateImpliedDefs_PreResolve"),
             prefix: new HarmonyMethod(patchType, nameof(FactoryStuffToAssemblerPreFix)));
+
+        harmony.Patch(AccessTools.Method(typeof(Process), nameof(Process.HandleIngredientsAndQuality)),
+            postfix: new HarmonyMethod(patchType, nameof(IncreaseQualityPostFix)));
+
         LongEventHandler.QueueLongEvent(action: GenerateDrillableMetalsList,
             textKey: null,
             doAsynchronously: true,
@@ -39,6 +44,47 @@ public class MassProductionExpansion : Mod
             }
         }
     }
+
+    public static void IncreaseQualityPostFix(Thing outThing, Process __instance) {
+        var itemQuality = outThing.TryGetComp<CompQuality>();
+        if (itemQuality == null) {
+            return;
+        }
+
+        CompAffectedByFacilities linkables =
+            __instance.advancedProcessor.parent.TryGetComp<CompAffectedByFacilities>();
+
+        if (linkables == null) {
+            return;
+        }
+
+        bool itemCanBeUpgraded = false;
+        foreach (var linkedThings in linkables.LinkedFacilitiesListForReading) {
+            if (linkedThings.def == MPEDefOf.MPE_MechUplink) {
+                itemCanBeUpgraded = true;
+                break;
+            }
+        }
+
+        if (!itemCanBeUpgraded) {
+            return;
+        }
+
+        if (!outThing.TryGetQuality(out QualityCategory qualityCategory)) {
+            return;
+        }
+
+        int currentQuality = (int)qualityCategory;
+        if (Rand.Bool) {
+            currentQuality++;
+            if (Rand.Bool) {
+                currentQuality++;
+            }
+        }
+        currentQuality = Math.Min(currentQuality, 6);
+        itemQuality.SetQuality((QualityCategory)currentQuality, null);
+    }
+
 
     public static bool ChemfuelExpandedActive;
 

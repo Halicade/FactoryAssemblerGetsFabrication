@@ -10,6 +10,7 @@ public class MPEDefOf
     public static ThingDef ElectricSmithy;
     public static ThingDef FueledSmithy;
     public static ThingDef DrugLab;
+    public static ThingDef MPE_MechUplink;
 
     [MayRequire("ceteam.combatextended")]
     public static StuffCategoryDef Steeled;

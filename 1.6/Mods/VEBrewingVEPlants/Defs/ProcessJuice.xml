@@ -6,7 +6,7 @@
     -->
     <PipeSystem.ProcessDef>
         <defName>MPE_T2_FruitJuice</defName>
-        <label>Make juice</label>
+        <label>Make a batch of juice from fruits</label>
         <description>Process and squeeze fruits to produce juice.</description>
         <spawnOnInteractionCell>true</spawnOnInteractionCell>
         <autoGrabFromHoppers>true</autoGrabFromHoppers>
@@ -22,9 +22,8 @@
         <effecterWhenWorking>true</effecterWhenWorking>
         <effecterDef>VFEFactory_Cook</effecterDef>
         <maxOutputCount>20</maxOutputCount>
-        
         <priorityInBillList>0</priorityInBillList>
-        <ticks>800</ticks>
+        <ticks>3600</ticks>
         <ingredients>
             <li>
                 <thingCategory>VCE_Fruit</thingCategory>
@@ -38,7 +37,7 @@
             </li>
         </results>
         <researchPrerequisites>
-            <li>PackagedSurvivalMeal</li>
+            <li>VBE_MixologyResearch</li>
             <li>VFE_BasicFactories</li>
         </researchPrerequisites>
     </PipeSystem.ProcessDef>

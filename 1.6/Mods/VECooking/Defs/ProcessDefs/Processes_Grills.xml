@@ -1,24 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    
     <PipeSystem.ProcessDef ParentName="MPE_GenericMealBase">
-        <defName>MPE_T2_MakeSimpleGrill</defName>
-        <label>Make simple grill</label>
-        <labelOverride>Make simple grill</labelOverride>
+        <defName>MPE_T2_MakeSimpleBake</defName>
+        <label>Make 8x simple bakes</label>
+        <labelOverride>Make simple bake</labelOverride>
         <description>Prepare packaged survival meals from a combination of meat and plant ingredients. Much of the ingredients are wasted in the preservation process. A total of 2.4 nutrition will make 4 survival meals.</description>
         <priorityInBillList>2</priorityInBillList>
-        <ticks>4800</ticks>
+        <ticks>7200</ticks>
         <ingredients>
             <li>
-                <thingCategory>MeatRaw</thingCategory>
-                <countNeeded>40</countNeeded>
+                <thing>VCE_Flour</thing>
+                <countNeeded>4</countNeeded>
             </li>
         </ingredients>
         <results>
             <li>
-                <thing>VCE_SimpleGrill</thing>
-                <count>4</count>
+                <thing>VCE_SimpleBake</thing>
+                <count>8</count>
                 <workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
                 <outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
             </li>
@@ -29,11 +28,47 @@
         </researchPrerequisites>
         <modExtensions>
             <li Class="MassProductionExpansion.ModExtension.nutritionChanger">
-                <nutritionToMake>2</nutritionToMake>
+                <nutritionToMake>1</nutritionToMake>
             </li>
         </modExtensions>
     </PipeSystem.ProcessDef>
-    
-    
-    
+
+    <PipeSystem.ProcessDef ParentName="MPE_GenericMealBase">
+        <defName>MPE_T2_MakeFineBake</defName>
+        <label>Make 8 fine bakes</label>
+        <labelOverride>Make simple bake</labelOverride>
+        <description>Prepare packaged survival meals from a combination of meat and plant ingredients. Much of the ingredients are wasted in the preservation process. A total of 2.4 nutrition will make 4 survival meals.</description>
+        <priorityInBillList>2</priorityInBillList>
+        <ticks>10800</ticks>
+        <ingredients>
+            <li>
+                <thingCategories>
+                    <li>MeatRaw</li>
+                    <li>AnimalProductRaw</li>
+                </thingCategories>
+                <countNeeded>1</countNeeded>
+            </li>
+            <li>
+                <thing>VCE_Flour</thing>
+                <countNeeded>2</countNeeded>
+            </li>
+        </ingredients>
+        <results>
+            <li>
+                <thing>VCE_FineBake</thing>
+                <count>8</count>
+                <workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
+                <outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
+            </li>
+        </results>
+        <researchPrerequisites>
+            <li>PackagedSurvivalMeal</li>
+            <li>VFE_BasicFactories</li>
+        </researchPrerequisites>
+        <modExtensions>
+            <li Class="MassProductionExpansion.ModExtension.nutritionChanger">
+                <nutritionToMake>3</nutritionToMake>
+            </li>
+        </modExtensions>
+    </PipeSystem.ProcessDef>
 </Defs>

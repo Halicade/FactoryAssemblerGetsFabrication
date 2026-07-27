@@ -37,7 +37,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -91,8 +91,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -136,7 +135,7 @@
 			<MaxHitPoints>450</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -191,8 +190,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -236,7 +234,7 @@
 			<MaxHitPoints>450</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -293,8 +291,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -341,7 +338,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -397,8 +394,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -442,7 +438,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -497,8 +493,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -542,7 +537,7 @@
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
@@ -597,8 +592,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -641,7 +635,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>800</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
@@ -696,8 +690,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -741,7 +734,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
@@ -796,8 +789,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -843,7 +835,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>400</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -898,8 +890,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -945,7 +936,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>500</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
@@ -1000,8 +991,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -1048,7 +1038,7 @@
 			<WorkToBuild>8000</WorkToBuild>
 			<MaxHitPoints>900</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
@@ -1103,8 +1093,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -1196,7 +1185,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -1239,7 +1228,7 @@
 			<WorkToBuild>6500</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
@@ -1294,8 +1283,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="vanillaracesexpanded.android" Class="PipeSystem.CompProperties_Resource">
@@ -1341,7 +1329,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>800</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
@@ -1396,8 +1384,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -1443,7 +1430,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -1498,8 +1485,7 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
+					<li>MPE_MechUplink</li>
 				</linkableFacilities>
 			</li>
 
