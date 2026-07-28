@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<PipeSystem.ProcessDef ParentName="MPE_GenericMealBase">
+		<defName>MPE_T2_MakeFriedFish</defName>
+		<label>Make 10x fried fish</label>
+		<labelOverride>Make 10x fried fish</labelOverride>
+		<description>Process a batch of fried fish. A total of 2.4 nutrition will make 4 grills.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>2400</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>VCEF_RawFishCategory</thingCategory>
+				<countNeeded>5</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_DeepFriedFish</thing>
+				<count>10</count>
+				<workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
+				<outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VCE_DeepFrying</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+		<modExtensions>
+			<li Class="MassProductionExpansion.ModExtension.nutritionChanger">
+				<nutritionToMake>2</nutritionToMake>
+			</li>
+		</modExtensions>
+	</PipeSystem.ProcessDef>
+
+</Defs>

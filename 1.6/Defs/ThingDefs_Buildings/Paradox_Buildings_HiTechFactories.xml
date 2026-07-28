@@ -37,7 +37,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Normal</tickerType>
 		<size>(3,3)</size>
@@ -57,25 +57,11 @@
 			<buildingTags>
 				<li>Production</li>
 			</buildingTags>
-
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
 		</inspectorTabs>
 		<comps>
-			<li Class="CompProperties_Refuelable">
-				<fuelConsumptionRate>10.0</fuelConsumptionRate>
-				<fuelCapacity>20.0</fuelCapacity>
-				<fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
-				<fuelFilter>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</fuelFilter>
-				<initialFuelPercent>1</initialFuelPercent>
-				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
-				<functionsInVacuum>false</functionsInVacuum>
-			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>false</shortCircuitInRain>
@@ -105,8 +91,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -115,7 +99,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedSmelter</defName>
 		<label>hi-Tech smelter</label>
-		<description>Extracts usable metal from slag chunks, broken-down weapons, apparel, stone chunks, and mechanoid corpses using strong electromagnets and heat.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
+		<description>Extracts usable metal from slag chunks, broken-down weapons, apparel, stone chunks, and mechanoid corpses using strong electromagnets and heat. Additionally, this upgraded smelter can cast metal objects.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedSmelter/HiTechAutomatedSmelter</texPath>
@@ -150,9 +134,9 @@
 			<MaxHitPoints>450</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,4)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -171,7 +155,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -205,8 +189,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -250,9 +232,9 @@
 			<MaxHitPoints>450</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,4)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -272,7 +254,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -307,8 +289,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -355,9 +335,9 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -377,7 +357,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -411,8 +391,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -456,9 +434,9 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -477,7 +455,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -511,8 +489,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -556,9 +532,9 @@
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -577,7 +553,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -609,15 +585,25 @@
 					<li>MPE_T2_MakeSurvivalMeal</li>
 					<li>MPE_T2_MakeSimpleMeal</li>
 					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeSimpleGrill</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeFineGrill</li>
 					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeSimpleBake</li>
 					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeFineBake</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeFineUncookedSoup</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeFriedMeats</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_MakeFriedVegetables</li>
+					<li MayRequire="vanillaexpanded.vcooke" MayRequireAnyOf="vanillaexpanded.vcef,ludeon.rimworld.Odyssey">MPE_T2_MakeFriedFish</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_AgaveNectar</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_InsectJellyPreserves</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_Mayo</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_SmokeleafButter</li>
+					<li MayRequire="vanillaexpanded.vcooke">MPE_T2_ChocolateSyrup</li>
+					<li MayRequire="vanillaexpanded.vcooke,vanillaexpanded.vplantse">MPE_T2_Ketchup</li>
+					<li MayRequire="vanillaexpanded.vcooke,vanillaexpanded.vplantse">MPE_T2_HotSauce</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -660,9 +646,9 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>800</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(5,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -681,7 +667,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -715,8 +701,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -760,9 +744,9 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(5,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -781,7 +765,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -815,8 +799,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -862,9 +844,9 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>400</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,4)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -883,7 +865,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -917,8 +899,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -964,9 +944,9 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>500</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -985,7 +965,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -1019,8 +999,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -1067,9 +1045,9 @@
 			<WorkToBuild>8000</WorkToBuild>
 			<MaxHitPoints>900</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(5,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1088,7 +1066,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -1122,8 +1100,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -1170,7 +1146,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1189,7 +1165,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -1217,7 +1193,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -1260,9 +1235,9 @@
 			<WorkToBuild>6500</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(5,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1281,7 +1256,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -1315,8 +1290,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="vanillaracesexpanded.android" Class="PipeSystem.CompProperties_Resource">
@@ -1362,9 +1335,9 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>800</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(5,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1383,7 +1356,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -1417,8 +1390,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
@@ -1464,9 +1435,9 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
-			<VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
+			<VEF_BuildingMaxOverclockFactor>3</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1485,7 +1456,7 @@
 				<li>Production</li>
 			</buildingTags>
 			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+			<workTableNotInRoomRoleFactor>0.25</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -1519,8 +1490,6 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Booster</li>
-					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 

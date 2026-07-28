@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<PipeSystem.ProcessDef>
+		<defName>MPE_T2_Ketchup</defName>
+		<label>make ketchup</label>
+		<labelOverride>Make Ketchup</labelOverride>
+		<description>Create ketchup from tomatoes. A thick sauce made from stewing tomatoes, both salty and tangy in tandem with a sweet aftertaste. Perfect for meaty meals or fried foods.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>400</ticks>
+		<ingredients>
+			<li>
+				<thing>VCE_RawTomatoes</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_Ketchup</thing>
+				<count>50</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VCE_CondimentsResearch</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+
+	<PipeSystem.ProcessDef>
+		<defName>MPE_T2_HotSauce</defName>
+		<label>make hot sauce</label>
+		<labelOverride>Make hot sauce</labelOverride>
+		<description>Create hot sauce from peppers. A potent, spicy sauce made from blending and simmering chilis and other spices. While particularly strong hot sauces hurt at first, they are known to numb pain and work up a warm sweat shortly after consumption.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>400</ticks>
+		<ingredients>
+			<li>
+				<thing>VCE_RawPepper</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_HotSauce</thing>
+				<count>50</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VCE_CondimentsResearch</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+
+</Defs>

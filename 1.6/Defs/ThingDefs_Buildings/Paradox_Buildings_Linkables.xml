@@ -31,8 +31,9 @@
 		</statBases>
 		<size>(4,4)</size>
 		<costList>
-			<Plasteel>60</Plasteel>
+			<Plasteel>240</Plasteel>
 			<ComponentSpacer>20</ComponentSpacer>
+			<AIPersonaCore>1</AIPersonaCore>
 		</costList>
 		<building>
 			<destroySound>BuildingDestroyed_Metal_Small</destroySound>

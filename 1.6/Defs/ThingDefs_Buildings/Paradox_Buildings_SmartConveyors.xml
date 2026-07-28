@@ -45,12 +45,12 @@
 			<WorkToBuild>1300</WorkToBuild>
 		</statBases>
 		<costList>
-			<Plasteel>10</Plasteel>
+			<Plasteel>20</Plasteel>
 		</costList>
 		<modExtensions>
 			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
 				<baseTexPath>Things/Building/SmartConveyorBelts</baseTexPath>
-				<ticksPerCell>20</ticksPerCell>
+				<ticksPerCell>40</ticksPerCell>
 				<itemsPerCell>1</itemsPerCell>
 			</li>
 		</modExtensions>
@@ -79,14 +79,14 @@
 			<WorkToBuild>1600</WorkToBuild>
 		</statBases>
 		<costList>
-			<Plasteel>20</Plasteel>
-			<ComponentIndustrial>1</ComponentIndustrial>
+			<Plasteel>30</Plasteel>
+			<ComponentSpacer>1</ComponentSpacer>
 		</costList>
 		<modExtensions>
 			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
-				<ticksPerCell>20</ticksPerCell>
+				<ticksPerCell>40</ticksPerCell>
 				<itemsPerCell>1</itemsPerCell>
-				<maxDistance>16</maxDistance>
+				<maxDistance>32</maxDistance>
 			</li>
 		</modExtensions>
 		<placeWorkers>
@@ -114,14 +114,14 @@
 			<WorkToBuild>1600</WorkToBuild>
 		</statBases>
 		<costList>
-			<Plasteel>20</Plasteel>
-			<ComponentIndustrial>1</ComponentIndustrial>
+			<Plasteel>30</Plasteel>
+			<ComponentSpacer>1</ComponentSpacer>
 		</costList>
 		<modExtensions>
 			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
-				<ticksPerCell>20</ticksPerCell>
+				<ticksPerCell>40</ticksPerCell>
 				<itemsPerCell>1</itemsPerCell>
-				<maxDistance>16</maxDistance>
+				<maxDistance>32</maxDistance>
 			</li>
 		</modExtensions>
 		<placeWorkers>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<PipeSystem.ProcessDef>
+		<defName>MPE_T2_AgaveNectar</defName>
+		<label>make agave nectar</label>
+		<labelOverride>Make agave nectar</labelOverride>
+		<description>Create agave nectar from agave. Agave nectar is a thin and semi-sweet nectar, known for its healing and anti-inflammatory properties.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>400</ticks>
+		<ingredients>
+			<li>
+				<thing>RawAgave</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_AgaveNectar</thing>
+				<count>50</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VCE_CondimentsResearch</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+
+	<PipeSystem.ProcessDef>
+		<defName>MPE_T2_InsectJellyPreserves</defName>
+		<label>make insect jelly preserves</label>
+		<labelOverride>Make insect jelly preserves</labelOverride>
+		<description>Create insect jelly preserves from insect jelly. Very rich and sweet, while being surprisingly healthy.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>400</ticks>
+		<ingredients>
+			<li>
+				<thing>InsectJelly</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_InsectJellyPreserves</thing>
+				<count>50</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VCE_CondimentsResearch</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+
+	<PipeSystem.ProcessDef>
+		<defName>MPE_T2_Mayo</defName>
+		<label>make mayo</label>
+		<labelOverride>Make mayo</labelOverride>
+		<description>Create mayo from eggs. A thick emulsion of egg, oil, and other herbs. Mayonnaise, while terrible for you, adds a pleasing tang and is very calorically dense.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>400</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>EggsUnfertilized</thingCategory>
+				<countNeeded>5</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_Mayo</thing>
+				<count>50</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VCE_CondimentsResearch</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+
+	<PipeSystem.ProcessDef>
+		<defName>MPE_T2_SmokeleafButter</defName>
+		<label>make smokeleaf butter</label>
+		<labelOverride>make smokeleaf butter</labelOverride>
+		<description>Create smokeleaf butter from smokeleaf and milk. A thickened, fatty substance made by churning milk into very thick cream, combining with smokeleaf oil and allowing it to set. Very unhealthy and hits quite a bit harder than a joint.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>400</ticks>
+		<ingredients>
+			<li>
+				<thing>Milk</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+			<li>
+				<thing>SmokeleafLeaves</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_SmokeleafButter</thing>
+				<count>50</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VCE_CondimentsResearch</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+
+	<PipeSystem.ProcessDef>
+		<defName>MPE_T2_ChocolateSyrup</defName>
+		<label>make chocolate syrup</label>
+		<labelOverride>Make chocolate syrup</labelOverride>
+		<description>Create chocolate syrup from genetically modified chocolate. While still not good for you, chocolate syrup is not quite as bad as straight sugar.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>400</ticks>
+		<ingredients>
+			<li>
+				<thing>Chocolate</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_ChocolateSyrup</thing>
+				<count>50</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VCE_CondimentsResearch</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+
+</Defs>
