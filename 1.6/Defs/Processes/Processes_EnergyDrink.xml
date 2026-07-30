@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>MPE_T2_EnergyDrinks</defName>
+		<label>make energy drinks</label>
+		<labelOverride>Make batch of energy drinks</labelOverride>
+		<description>Process a batch of energy drinks more efficiently without needing uranium to mix.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<ticks>2000</ticks>
+		<ingredients>
+			<li>
+				<thing>VBE_Soda</thing>
+				<countNeeded>25</countNeeded>
+			</li>
+			<li>
+				<thing>VBE_RawCoffee</thing>
+				<countNeeded>25</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_EnergyDrink</thing>
+				<count>25</count>
+			</li>
+		</results>
+		<researchPrerequisites>
+			<li>VBE_MixologyResearch</li>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+
+</Defs>
