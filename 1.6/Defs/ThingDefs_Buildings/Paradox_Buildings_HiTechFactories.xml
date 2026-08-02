@@ -299,8 +299,8 @@
 	</ThingDef>
 	<ThingDef ParentName="BuildingBase">
 		<defName>MPE_HiTechAutomatedMasonrySaw</defName>
-		<label>hi-Tech masonry saw</label>
-		<description>An industrial machine capable of cutting stone chunks into usable blocks.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
+		<label>hi-Tech industrial saw</label>
+		<description>An industrial machine with a massive saw capable of cutting stone, wood, metal and other resources.\n\nHi-Tech Factory buildings produce at two times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for much higher efficiency, increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/HiTechAutomatedMasonrySaw/HiTechAutomatedMasonrySaw</texPath>
