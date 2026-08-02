@@ -209,11 +209,13 @@ public class MassProductionExpansion : Mod
             }
         }
 
+        /*
         if (ModLister.AnyModActiveNoSuffix(["FrozenSnowFox.FrozenSnowFoxTweaks"])) {
             foreach (PipeSystem.ProcessDef item in ImpliedBionics.ImpliedFSFBionicProcesses(hotReload)) {
                 DefGenerator.AddImpliedDef(item, hotReload);
             }
         }
+        */
 
 
         // T3 upgrades
