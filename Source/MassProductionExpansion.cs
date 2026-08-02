@@ -179,15 +179,11 @@ public class MassProductionExpansion : Mod
             }
         }
 
-        /*
-         Not needed
         foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Medicine", 0.5f,
                      FactoryDefOf.VFEFactory_MedicineGranulator,
                      MPEDefOf.MPE_HiTechMedicineGranulator, hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
         }
-        */
-
 
         foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Machining_", 0.5f,
                      FactoryDefOf.VFEFactory_AutomatedMachiningBay,
@@ -211,9 +207,12 @@ public class MassProductionExpansion : Mod
             DefGenerator.AddImpliedDef(item, hotReload);
         }
 
+        /*
+         Not needed
         foreach (var item in ImpliedMedicine.ImpliedMedicineProcesses(hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
         }
+        */
 
         foreach (var item in ImpliedStone.ImpliedStoneProcesses(hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
