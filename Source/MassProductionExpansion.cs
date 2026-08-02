@@ -16,12 +16,19 @@ public class MassProductionExpansion : Mod
         Harmony harmony = new("Hali.MassProductionExpansion");
         Type patchType = typeof(MassProductionExpansion);
         ChemfuelExpandedActive = ModLister.AnyModActiveNoSuffix(["vanillaexpanded.vchemfuele"]);
+        VECookingActive = ModLister.AnyModActiveNoSuffix(["VanillaExpanded.VCookE"]);
+        CEActive = ModLister.AnyModActiveNoSuffix(["ceteam.combatextended"]);
 
         harmony.Patch(AccessTools.Method(typeof(DefGenerator), "GenerateImpliedDefs_PreResolve"),
             prefix: new HarmonyMethod(patchType, nameof(FactoryStuffToAssemblerPreFix)));
 
         harmony.Patch(AccessTools.Method(typeof(Process), nameof(Process.HandleIngredientsAndQuality)),
             postfix: new HarmonyMethod(patchType, nameof(IncreaseQualityPostFix)));
+
+        if (CEActive) {
+            harmony.Patch(AccessTools.Method("CombatExtended.AmmoInjector:Inject"),
+                postfix: new HarmonyMethod(patchType, nameof(CeAmmunitionCreator)));
+        }
 
         LongEventHandler.QueueLongEvent(action: GenerateDrillableMetalsList,
             textKey: null,
@@ -81,15 +88,18 @@ public class MassProductionExpansion : Mod
                 currentQuality++;
             }
         }
+
         currentQuality = Math.Min(currentQuality, 6);
         itemQuality.SetQuality((QualityCategory)currentQuality, null);
     }
 
 
     public static bool ChemfuelExpandedActive;
+    public static bool VECookingActive;
+    public static bool CEActive;
 
-    //Running this after VE factory cause it seems like a smart idea
-    [HarmonyAfter("com.VanillaFurnitureExpandedFactory")]
+    //Needs to run after VE factory
+    [HarmonyPriority(Priority.Low)]
     public static void FactoryStuffToAssemblerPreFix(bool hotReload = false) {
         // T2 Upgrades
 
@@ -135,10 +145,12 @@ public class MassProductionExpansion : Mod
             DefGenerator.AddImpliedDef(item, hotReload);
         }
 
-        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Ammunition_", 0.5f,
-                     FactoryDefOf.VFEFactory_AutomatedAmmunitionPress,
-                     MPEDefOf.MPE_HiTechAutomatedAmmunitionPress, hotReload)) {
-            DefGenerator.AddImpliedDef(item, hotReload);
+        if (!CEActive) {
+            foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Ammunition_", 0.5f,
+                         FactoryDefOf.VFEFactory_AutomatedAmmunitionPress,
+                         MPEDefOf.MPE_HiTechAutomatedAmmunitionPress, hotReload)) {
+                DefGenerator.AddImpliedDef(item, hotReload);
+            }
         }
 
         foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Loom_", 0.5f,
@@ -157,6 +169,14 @@ public class MassProductionExpansion : Mod
                      FactoryDefOf.VFEFactory_AutomatedDistillery,
                      MPEDefOf.MPE_HiTechAutomatedDistillery, hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
+        }
+
+        if (VECookingActive) {
+            foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Cannery_", 0.5f,
+                         FactoryDefOf.VFEFactory_AutomatedCannery,
+                         MPEDefOf.MPE_HiTechAutomatedCannery, hotReload)) {
+                DefGenerator.AddImpliedDef(item, hotReload);
+            }
         }
 
         /*
@@ -268,10 +288,12 @@ public class MassProductionExpansion : Mod
             DefGenerator.AddImpliedDef(item, hotReload);
         }
 
-        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPET3_", 0.5f,
-                     MPEDefOf.MPE_HiTechAutomatedAmmunitionPress,
-                     MPEDefOf.MPE_SmartAutomatedAmmunitionPress, hotReload)) {
-            DefGenerator.AddImpliedDef(item, hotReload);
+        if (!CEActive) {
+            foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPET3_", 0.5f,
+                         MPEDefOf.MPE_HiTechAutomatedAmmunitionPress,
+                         MPEDefOf.MPE_SmartAutomatedAmmunitionPress, hotReload)) {
+                DefGenerator.AddImpliedDef(item, hotReload);
+            }
         }
 
         foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPET3_", 0.5f,
@@ -308,6 +330,30 @@ public class MassProductionExpansion : Mod
                      MPEDefOf.MPE_HiTechAutomatedCrematorium,
                      MPEDefOf.MPE_SmartAutomatedCrematorium, hotReload)) {
             DefGenerator.AddImpliedDef(item, hotReload);
+        }
+
+        if (VECookingActive) {
+            foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPET3_", 0.5f,
+                         MPEDefOf.MPE_HiTechAutomatedCannery,
+                         MPEDefOf.MPE_SmartAutomatedCannery, hotReload)) {
+                DefGenerator.AddImpliedDef(item, hotReload);
+            }
+        }
+    }
+
+    // Need to run after Munitions Industries for VFE - Factory
+    [HarmonyPriority(Priority.Low)]
+    public static void CeAmmunitionCreator() {
+        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPE_T2Ammunition_", 0.5f,
+                     FactoryDefOf.VFEFactory_AutomatedAmmunitionPress,
+                     MPEDefOf.MPE_HiTechAutomatedAmmunitionPress)) {
+            DefGenerator.AddImpliedDef(item);
+        }
+
+        foreach (var item in ImpliedUpgrader.ImpliedGenericProcess("MPET3_", 0.5f,
+                     MPEDefOf.MPE_HiTechAutomatedAmmunitionPress,
+                     MPEDefOf.MPE_SmartAutomatedAmmunitionPress)) {
+            DefGenerator.AddImpliedDef(item);
         }
     }
 }

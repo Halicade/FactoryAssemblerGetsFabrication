@@ -24,6 +24,9 @@ public class FactoryDefOf
     public static ThingDef VFEFactory_AutomatedDistillery;
     public static ThingDef VFEFactory_AutomatedMachiningBay;
     public static ThingDef VFEFactory_AutomatedCrematorium;
+    
+    [MayRequire("VanillaExpanded.VCookE")]
+    public static ThingDef VFEFactory_AutomatedCannery;
 
     public static SoundDef VFEFactory_AutomatedDrillSustainer;
     

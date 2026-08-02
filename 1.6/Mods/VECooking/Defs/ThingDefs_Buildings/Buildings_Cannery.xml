@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
 	<ThingDef ParentName="BuildingBase">
@@ -28,6 +28,7 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<uiIconScale>0.8</uiIconScale>
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
@@ -89,13 +90,7 @@
 				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
-					<li>VFEFactory_MakeCannedMeat</li>
-					<li>VFEFactory_MakeCannedProduce</li>
-					<li MayRequire="VanillaExpanded.VPlantsE">VFEFactory_MakeCannedFruit</li>
-					<li>VFEFactory_MakeCannedEggs</li>
-					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_MakeCannedFish</li>
-					<li>VFEFactory_MakeCannedSoup</li>
-					<li MayRequire="VanillaExpanded.VBrewE">MPE_T2_EnergyDrinks</li>
+
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
@@ -134,6 +129,7 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>MPE_SterileTile</terrainAffordanceNeeded>
 		<uiIconScale>0.8</uiIconScale>
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
@@ -195,12 +191,7 @@
 				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
-					<li>VFEFactory_MakeCannedMeat</li>
-					<li>VFEFactory_MakeCannedProduce</li>
-					<li MayRequire="VanillaExpanded.VPlantsE">VFEFactory_MakeCannedFruit</li>
-					<li>VFEFactory_MakeCannedEggs</li>
-					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_MakeCannedFish</li>
-					<li>VFEFactory_MakeCannedSoup</li>
+
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>

@@ -9,6 +9,7 @@ namespace MassProductionExpansion.Implied;
 public class ImpliedUpgrader
 {
     public static int MasonryButcherCounter = 0;
+
 /*
     public static IEnumerable<PipeSystem.ProcessDef> ImpliedMasonryButcherProcess(bool hotReload = false) {
         List<ProcessDef> masonryRecipes = FactoryDefOf.VFEFactory_AutomatedMasonrySaw
@@ -20,7 +21,7 @@ public class ImpliedUpgrader
         List<ProcessDef> masonryMincerRecipes = [..masonryRecipes, ..mincerRecipes];
 
         foreach (ProcessDef def in masonryMincerRecipes) {
-            
+
             yield return UpgradeGenerator.UpgradeTierCombinedProcesses(prefix: "MPE_Masonry_T2", tickMultiplier: 0.75f,
                 defBeingUpgraded: def,
                 buildingGettingRecipes: MPEDefOf.MPE_T2AutomatedMasonrySaw, index: ++MasonryButcherCounter,
@@ -28,17 +29,27 @@ public class ImpliedUpgrader
         }
     }
 */
-    public static IEnumerable<ProcessDef> ImpliedGenericProcess(string prefix, float tickMultiplier, ThingDef defBeingUpgraded,
-        ThingDef buildingGettingUpgrades, bool hotReload = false) {
-        List<ProcessDef> upgradeableRecipes= defBeingUpgraded.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes
-            .ToList();
-
-        foreach (ProcessDef recipe in upgradeableRecipes) {
-            yield return UpgradeGenerator.UpgradeTier(prefix: prefix, tickMultiplier: tickMultiplier,
-                defBeingUpgraded: recipe,
-                buildingGettingRecipes: buildingGettingUpgrades, hotReload: hotReload);
-        }
+    public static IEnumerable<ProcessDef> ImpliedGenericProcess(
+        string prefix,
+        float tickMultiplier,
+        ThingDef defBeingUpgraded,
+        ThingDef buildingGettingUpgrades,
+        bool hotReload = false) {
         
+        CompProperties_AdvancedResourceProcessor processComp =
+            defBeingUpgraded.GetCompProperties<CompProperties_AdvancedResourceProcessor>();
+        bool haveProcesses = processComp?.processes.NullOrEmpty() == false;
+        if (haveProcesses) {
+            List<ProcessDef> upgradeableRecipes = processComp.processes.ToList();
+
+            foreach (ProcessDef recipe in upgradeableRecipes) {
+                yield return UpgradeGenerator.UpgradeTier(prefix: prefix, tickMultiplier: tickMultiplier,
+                    defBeingUpgraded: recipe,
+                    buildingGettingRecipes: buildingGettingUpgrades, hotReload: hotReload);
+            }
+        }
+        else {
+            Log.Warning(defBeingUpgraded+" Has no recipes ");
+        }
     }
-    
 }

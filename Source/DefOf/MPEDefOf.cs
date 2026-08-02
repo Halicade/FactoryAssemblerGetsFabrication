@@ -32,6 +32,9 @@ public class MPEDefOf
     public static ThingDef MPE_HiTechAutomatedMachiningBay;
     public static ThingDef MPE_HiTechAutomatedCrematorium;
     
+    [MayRequire("VanillaExpanded.VCookE")]
+    public static ThingDef MPE_HiTechAutomatedCannery;
+    
     // T3
     public static ThingDef MPE_SmartAutomatedDrillPlatform;
     public static ThingDef MPE_SmartAutomatedSmelter;
@@ -48,6 +51,8 @@ public class MPEDefOf
     public static ThingDef MPE_SmartMedicineGranulator;
     public static ThingDef MPE_SmartAutomatedMachiningBay;
     public static ThingDef MPE_SmartAutomatedCrematorium;
+    [MayRequire("VanillaExpanded.VCookE")]
+    public static ThingDef MPE_SmartAutomatedCannery;
     
     
     public static ProcessorTemplateDef MPE_Assembler_;
