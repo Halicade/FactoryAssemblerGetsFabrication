@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
+	<!--
+    How to set up recipe.
+    Get original recipes filter category and count. 
+    Multiply count by 20. That is countNeeded which goes in ingredients
+    
+    MassProductionExpansion.ModExtension.nutritionChanger
+    nutritionToMake is total count
+    Unlike other recipes the original recipe makes twice the amount.
+    -->
     <PipeSystem.ProcessDef ParentName="MPE_GenericMealBase">
         <defName>MPE_T2_MakeSimpleBake</defName>
         <label>Make 8x simple bakes</label>
@@ -11,7 +19,7 @@
         <ingredients>
             <li>
                 <thing>VCE_Flour</thing>
-                <countNeeded>4</countNeeded>
+				<countNeeded>80</countNeeded>
             </li>
         </ingredients>
         <results>
@@ -19,7 +27,6 @@
                 <thing>VCE_SimpleBake</thing>
                 <count>8</count>
                 <workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
-                <outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
             </li>
         </results>
         <researchPrerequisites>
@@ -27,7 +34,7 @@
         </researchPrerequisites>
         <modExtensions>
             <li Class="MassProductionExpansion.ModExtension.nutritionChanger">
-                <nutritionToMake>1</nutritionToMake>
+				<nutritionToMake>4</nutritionToMake>
             </li>
         </modExtensions>
     </PipeSystem.ProcessDef>
@@ -35,7 +42,7 @@
 	<PipeSystem.ProcessDef ParentName="MPE_GenericMealBase">
 		<defName>MPE_T2_MakeFineBake</defName>
 		<label>Make 8 fine bakes</label>
-		<labelOverride>Make bulk simple bake</labelOverride>
+		<labelOverride>Make bulk fine bake</labelOverride>
 		<description>Process a bulk batch of fine baked meals. A total of 2.4 nutrition will make 4 survival meals.</description>
 		<priorityInBillList>2</priorityInBillList>
 		<ticks>10800</ticks>
@@ -44,17 +51,17 @@
 				<thingCategory>
 					<li>MeatRaw</li>
 				</thingCategory>
-				<countNeeded>1</countNeeded>
+				<countNeeded>20</countNeeded>
 			</li>
 			<li>
 				<thingCategory>
 					<li>PlantFoodRaw</li>
 				</thingCategory>
-				<countNeeded>1</countNeeded>
+				<countNeeded>20</countNeeded>
 			</li>
 			<li>
 				<thing>VCE_Flour</thing>
-				<countNeeded>2</countNeeded>
+				<countNeeded>40</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -62,7 +69,6 @@
 				<thing>VCE_FineBake</thing>
 				<count>8</count>
 				<workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
-				<outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
 			</li>
 		</results>
 		<researchPrerequisites>
@@ -70,7 +76,7 @@
 		</researchPrerequisites>
 		<modExtensions>
 			<li Class="MassProductionExpansion.ModExtension.nutritionChanger">
-				<nutritionToMake>3</nutritionToMake>
+				<nutritionToMake>4</nutritionToMake>
 			</li>
 		</modExtensions>
 	</PipeSystem.ProcessDef>

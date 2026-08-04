@@ -11,30 +11,23 @@
 		<ingredients>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>2</countNeeded>
+				<countNeeded>160</countNeeded>
 			</li>
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>2</countNeeded>
+				<countNeeded>160</countNeeded>
 			</li>
 		</ingredients>
 		<results>
 			<li>
 				<thing>VCE_UncookedSoupFine</thing>
 				<count>4</count>
-				<workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
-				<outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
 			</li>
 		</results>
 		<researchPrerequisites>
 			<li>VCE_SoupCooking</li>
 			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
-		<modExtensions>
-			<li Class="MassProductionExpansion.ModExtension.nutritionChanger">
-				<nutritionToMake>2</nutritionToMake>
-			</li>
-		</modExtensions>
 	</PipeSystem.ProcessDef>
     
 </Defs>

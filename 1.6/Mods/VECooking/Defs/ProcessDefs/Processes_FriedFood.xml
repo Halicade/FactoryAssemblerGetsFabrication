@@ -11,7 +11,7 @@
 		<ingredients>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>5</countNeeded>
+				<countNeeded>10</countNeeded>
 				<disallowedThingDefs>
 					<li>Meat_Human</li>
 					<li>Meat_Megaspider</li>
@@ -26,20 +26,13 @@
 		<results>
 			<li>
 				<thing>VCE_DeepFriedBigMeat</thing>
-				<count>20</count>
-				<workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
-				<outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
+				<count>4</count>
 			</li>
 		</results>
 		<researchPrerequisites>
 			<li>VCE_DeepFrying</li>
 			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
-		<modExtensions>
-			<li Class="MassProductionExpansion.ModExtension.nutritionChanger">
-				<nutritionToMake>2</nutritionToMake>
-			</li>
-		</modExtensions>
 	</PipeSystem.ProcessDef>
 
 	<PipeSystem.ProcessDef ParentName="MPE_GenericMealBase">
@@ -52,7 +45,7 @@
 		<ingredients>
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>5</countNeeded>
+				<countNeeded>10</countNeeded>
 				<disallowedThingDefs>
 					<li>VCE_DeepFriedVegetables</li>
 				</disallowedThingDefs>
@@ -61,19 +54,12 @@
 		<results>
 			<li>
 				<thing>VCE_DeepFriedVegetables</thing>
-				<count>10</count>
-				<workerClass>MassProductionExpansion.ResultWorker.Meals</workerClass>
-				<outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
+				<count>4</count>
 			</li>
 		</results>
 		<researchPrerequisites>
 			<li>VCE_DeepFrying</li>
 			<li>MPE_HiTechFactories</li>
 		</researchPrerequisites>
-		<modExtensions>
-			<li Class="MassProductionExpansion.ModExtension.nutritionChanger">
-				<nutritionToMake>2</nutritionToMake>
-			</li>
-		</modExtensions>
 	</PipeSystem.ProcessDef>
 </Defs>
