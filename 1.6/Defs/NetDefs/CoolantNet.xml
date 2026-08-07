@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+<!-- Designator Dropdowns -->
+
+	<DesignatorDropdownGroupDef>
+		<defName>MPE_CoolantPipes</defName>
+	</DesignatorDropdownGroupDef>
+
+<!-- Add Pipe VE Category -->
+
+	<DesignationCategoryDef>
+		<defName>VCHE_PipeNetworks</defName>
+		<label>pipe networks</label>
+		<order>350</order>
+		<specialDesignatorClasses>
+			<li>Designator_Cancel</li>
+			<li>Designator_Deconstruct</li>
+		</specialDesignatorClasses>
+	</DesignationCategoryDef>
+
+<!-- Coolant Def -->
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>MPE_Coolant</defName>
+		<label>Coolant</label>
+		<description>Coolant fluid</description>
+		<graphicData>
+			<texPath>UI/CSG/IConduit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.85</drawSize>
+		</graphicData>
+		<stackLimit>150</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<statBases>
+			<MarketValue>0</MarketValue>
+			<Mass>0.07</Mass>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<deepCommonality>1</deepCommonality>
+		<deepCountPerPortion>30</deepCountPerPortion>
+		<deepLumpSizeRange>40~80</deepLumpSizeRange>
+		<deepCountPerCell>2100</deepCountPerCell>
+		<comps>
+			<!-- <li Class="VHelixienGasE.CompProperties_CompDestroyOnSpawn" /> -->
+		</comps>
+		<modExtensions>
+			<li Class="VEF.Things.ThingDefExtension">
+				<deepColor>(0.24, 0.4, 0.2)</deepColor>
+				<allowDeepDrill>false</allowDeepDrill>
+			</li>
+		</modExtensions>
+		<!-- Never appear -->
+		<destroyOnDrop>True</destroyOnDrop>
+		<canGenerateDefaultDesignator>false</canGenerateDefaultDesignator>
+		<tradeability>None</tradeability>
+		<useHitPoints>false</useHitPoints>
+		<allowedArchonexusCount>0</allowedArchonexusCount>
+	</ThingDef>
+
+<!-- Coolant Network -->
+
+	<PipeSystem.PipeNetDef>
+		<defName>MPE_CoolantNet</defName>
+		<resource>
+			<name>Coolant</name>
+			<color>(153, 217, 234)</color>
+			<onlyShowStored>True</onlyShowStored>
+			<offTexPath>UI/NeedsCoolant</offTexPath>
+		</resource>
+		<pipeDefs>
+			<li>MPE_CoolantPipe</li>
+			<li>MPE_SubCoolantPipe</li>
+		</pipeDefs>
+		<designator>
+			<deconstructIconPath>UI/CoolantDIE</deconstructIconPath>
+			<designationCategoryDef>VCHE_PipeNetworks</designationCategoryDef>
+		</designator>
+		<overlayOptions>
+			<overlayColor>(153, 217, 234)</overlayColor>
+		</overlayOptions> 
+		<linkToRefuelables>
+			<li>
+				<thing>MPE_Coolant</thing>
+				<ratio>1</ratio>
+			</li>
+		</linkToRefuelables>
+	</PipeSystem.PipeNetDef>
+
+<!-- Coolant Pipes -->
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>MPE_CoolantPipe</defName>
+		<label>Coolant pipe</label>
+		<description>Coolant pipes for transfering heat.</description>
+		<thingClass>PipeSystem.Building_Pipe</thingClass>
+		<category>Building</category>
+		<tickerType>Rare</tickerType>
+		<graphicData>
+			<texPath>Things/Building/PipeNet/Linked/Coolant_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom8</li>
+			</linkFlags>
+			<damageData>
+				<rect>(0,0.35,1,0.3)</rect>
+			</damageData>
+		</graphicData>
+		<uiIconPath>UI/Coolant_MenuIcon</uiIconPath>
+		<uiIconScale>0.7</uiIconScale>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<blueprintGraphicData>
+				<texPath>Things/Building/PipeNet/Linked/Coolant_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		<drawerType>MapMeshOnly</drawerType>
+		<altitudeLayer>Conduits</altitudeLayer>
+		<passability>Standable</passability>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToBuild>40</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costList>
+			<Silver>30</Silver>
+		</costList>
+		<drawStyleCategory>Conduits</drawStyleCategory>
+		<comps>
+			<li Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>MPE_CoolantNet</pipeNet>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PipeSystem.PlaceWorker_Pipe</li>
+		</placeWorkers>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>VCHE_PipeNetworks</designationCategory>
+		<designatorDropdown>MPE_CoolantPipes</designatorDropdown>
+		<constructEffect>ConstructMetal</constructEffect>
+		<clearBuildingArea>false</clearBuildingArea>
+		<researchPrerequisites>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</ThingDef>
+  
+	<ThingDef ParentName="BuildingBase">
+		<defName>MPE_SubCoolantPipe</defName>
+		<label>hidden coolant pipe</label>
+		<description>Coolant pipes burried undeground.</description>
+		<thingClass>PipeSystem.Building_Pipe</thingClass>
+		<category>Building</category>
+		<tickerType>Rare</tickerType>
+		<graphicData>
+			<texPath>UI/CSG/IConduit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom8</li>
+			</linkFlags>
+			<damageData>
+				<rect>(0,0.35,1,0.3)</rect>
+			</damageData>
+		</graphicData>
+		<uiIconPath>UI/BuriedCoolant_MenuIcon</uiIconPath>
+		<uiIconScale>0.7</uiIconScale>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<blueprintGraphicData>
+				<texPath>Things/Building/PipeNet/Linked/Coolant_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+			<ai_neverTrashThis>true</ai_neverTrashThis>
+			<isTargetable>false</isTargetable>
+			<expandHomeArea>false</expandHomeArea>
+			<canBeDamagedByAttacks>false</canBeDamagedByAttacks>
+		</building>
+		<drawerType>MapMeshOnly</drawerType>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<passability>Standable</passability>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<WorkToBuild>320</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<drawStyleCategory>Conduits</drawStyleCategory>
+		<costList>
+			<Silver>60</Silver>
+		</costList>
+		<comps>
+			<li Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>MPE_CoolantNet</pipeNet>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PipeSystem.PlaceWorker_Pipe</li>
+		</placeWorkers>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>VCHE_PipeNetworks</designationCategory>
+		<designatorDropdown>MPE_CoolantPipes</designatorDropdown>
+		<constructEffect>ConstructMetal</constructEffect>
+		<clearBuildingArea>false</clearBuildingArea>
+		<researchPrerequisites>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+<!-- Coolant Valve -->
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>MPE_CoolantValve</defName>
+		<label>coolant valve</label>
+		<description>Switches coolant flow on/off.</description>
+		<thingClass>PipeSystem.Building_PipeValve</thingClass>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Things/Building/PipeNet/CoolantValve/CoolantValve</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<allowWireConnection>false</allowWireConnection>
+		</building>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Standable</passability>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<WorkToBuild>200</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-2</Beauty>
+		</statBases>
+		<costList>
+			<Silver>150</Silver>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="PipeSystem.CompProperties_PipeValve">
+				<pipeNet>MPE_CoolantNet</pipeNet>
+				<alwaysLinkToPipes>true</alwaysLinkToPipes>
+			</li>
+			<li Class="CompProperties_Flickable">
+				<commandTexture>UI/NeedsCoolant</commandTexture>
+				<commandLabelKey>MPE_CommandToggleCoolant_Label</commandLabelKey>
+				<commandDescKey>MPE_CommandToggleCoolant_Desc</commandDescKey>
+			</li>
+		</comps>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<neverMultiSelect>false</neverMultiSelect>
+		<tickerType>Normal</tickerType>
+		<designationCategory>VCHE_PipeNetworks</designationCategory>
+		<constructEffect>ConstructMetal</constructEffect>
+		<researchPrerequisites>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+<!-- Coolant Storage -->
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>MPE_CoolantStorage</defName>
+		<label>coolant storage</label>
+		<description>A storage system for coolant.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/PipeNet/CoolantStorage</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<drawRotated>false</drawRotated>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<defaultPlacingRot>East</defaultPlacingRot>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<pathCost>50</pathCost>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.40</fillPercent>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>2400</WorkToBuild>
+			<Mass>24</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(2,2)</size>
+		<costList>
+			<Plasteel>120</Plasteel>
+			<Silver>1200</Silver>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+		<building>
+			<blueprintGraphicData>
+     	 			<texPath>Things/Building/PipeNet/CoolantStorage</texPath>
+      				<graphicClass>Graphic_Single</graphicClass>
+				<drawRotated>false</drawRotated>
+			</blueprintGraphicData>
+			<relatedBuildCommands>
+				<li>MPE_CoolantPipe</li>
+				<li>MPE_SubCoolantPipe</li>
+			</relatedBuildCommands>
+		</building>
+		<comps>
+			<li Class="PipeSystem.CompProperties_ResourceStorage">
+				<pipeNet>MPE_CoolantNet</pipeNet>
+				<storageCapacity>1000</storageCapacity>
+        			<barSize>(0.75, 0.05)</barSize>
+        			<margin>0</margin>
+        			<centerOffset>(-0, 0, -0.43)</centerOffset>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="PipeSystem.CompProperties_SpawnerOrNet">
+				<pipeNet>MPE_CoolantNet</pipeNet>
+				<!-- Vanilla part -->
+				<requiresPower>true</requiresPower>
+				<thingToSpawn>MPE_Coolant</thingToSpawn>
+				<spawnCount>250</spawnCount>
+				<spawnIntervalRange>
+					<min>60000</min>
+					<max>60000</max>
+				</spawnIntervalRange>
+				<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+				<showMessageIfOwned>true</showMessageIfOwned>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<basePowerConsumption>1200</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>10</fuelConsumptionRate>
+				<fuelCapacity>20</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>Neutroamine</li>
+					</thingDefs>
+				</fuelFilter>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+				<canEjectFuel>false</canEjectFuel>
+			</li>
+			<li MayRequire="vanillaracesexpanded.android" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VREA_NeutroamineNet</pipeNet>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<designationCategory>VCHE_PipeNetworks</designationCategory>
+		<staticSunShadowHeight>0.2</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
+		<researchPrerequisites>
+			<li>MPE_HiTechFactories</li>
+		</researchPrerequisites>
+		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
+	</ThingDef>
+</Defs>
