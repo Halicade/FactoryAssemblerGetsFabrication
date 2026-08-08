@@ -53,12 +53,17 @@ public class MPEDefOf
     public static ThingDef MPE_SmartAutomatedCrematorium;
     [MayRequire("VanillaExpanded.VCookE")]
     public static ThingDef MPE_SmartAutomatedCannery;
+
+    [MayRequireOdyssey] 
+    public static ThingDef MPE_GravtechAssembler;
     
     
     public static ProcessorTemplateDef MPE_Assembler_;
     public static ProcessorTemplateDef MPE_Medicine_;
     public static ProcessorTemplateDef MPE_Smelter_;
     public static ProcessorTemplateDef MPE_Machining_;
+    [MayRequireOdyssey]
+    public static ProcessorTemplateDef MPE_Grav_;
 
 
     //Required so the game doesn't yell at you if not loaded

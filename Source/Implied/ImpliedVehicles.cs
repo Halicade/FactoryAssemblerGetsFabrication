@@ -11,8 +11,6 @@ public class ImpliedVehicles
     public static IEnumerable<PipeSystem.ProcessDef> ImpliedGarageProcesses(bool hotReload = false) {
         List<ThingDef> garageBenchRecipes = DefDatabase<ThingDef>.AllDefsListForReading.Where(x =>
             (x.costStuffCount != 0 || x.costList != null)
-            //Assembling station only has 4 ports
-            && x.costList?.Count < 5
             && x.recipeMaker?.recipeUsers?.Contains(MPEDefOf.VVE_GarageBench) == true &&
             !x.defName.Contains("Shell")).ToList();
 

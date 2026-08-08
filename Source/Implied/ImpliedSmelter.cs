@@ -12,16 +12,14 @@ public class ImpliedSmelter
     public static IEnumerable<PipeSystem.ProcessDef> ImpliedSmelterProcess(bool hotReload = false) {
         List<ThingDef> smithyRecipes = DefDatabase<ThingDef>.AllDefsListForReading.Where(x =>
             !x.Minifiable &&
-            (x.costStuffCount != 0 && (x.stuffCategories.NullOrEmpty() ||
-                                       x.stuffCategories.Contains(StuffCategoryDefOf.Metallic))
-             || x.costList is { Count: <= 4 })
+            x.costStuffCount != 0 && (x.stuffCategories.NullOrEmpty() ||
+                                      x.stuffCategories.Contains(StuffCategoryDefOf.Metallic))
             && (x.recipeMaker?.recipeUsers?.Contains(MPEDefOf.ElectricSmithy) == true ||
                 x.recipeMaker?.recipeUsers?.Contains(MPEDefOf.FueledSmithy) == true)
         ).ToList();
 
         List<ThingDef> recipesForSmelter = smithyRecipes.Where(x =>
             x.costList?.NullOrEmpty() == true
-            || x.costList?.Count <= 3
             && x.costList?.ContainsAny(costList => costList.thingDef == ThingDefOf.WoodLog) != true
             || x.stuffCategories?.Contains(StuffCategoryDefOf.Metallic) == true
         ).ToList();

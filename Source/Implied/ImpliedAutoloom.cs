@@ -13,10 +13,9 @@ public class ImpliedAutoloom
     public static IEnumerable<PipeSystem.ProcessDef> ImpliedAutoloomProcesses(bool hotReload = false) {
         List<ThingDef> tailoringBenchRecipes = DefDatabase<ThingDef>.AllDefsListForReading.Where(x =>
             //Opposite of VE factorys stuff. We want recipes that have no costStuffCount and do have a costList
-            (x.costStuffCount == 0 && x.costList != null)
-            //looms only have 2 ports
-            && x.costList?.Count < 3
-            && x.recipeMaker?.recipeUsers?.Contains(InternalDefOf.HandTailoringBench) == true).ToList();
+            x.costStuffCount == 0 &&
+            x.costList != null &&
+            x.recipeMaker?.recipeUsers?.Contains(InternalDefOf.HandTailoringBench) == true).ToList();
 
         int autoLoomCount = InternalDefOf.VFEFactory_Autoloom
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>()

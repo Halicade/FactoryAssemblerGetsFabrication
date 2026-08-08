@@ -51,6 +51,48 @@ public static class UpgradeGenerator
             .processes.Add(processDef);
         return processDef;
     }
+    
+    /// <summary>
+    /// Transfer recipes from one machine to another
+    /// </summary>
+    public static ProcessDef TransferTier(string prefix, float tickMultiplier,
+        ProcessDef defBeingUpgraded, ThingDef buildingGettingRecipes, ProcessorTemplateDef templateForNew, bool hotReload = false ) {
+        string defName = prefix + defBeingUpgraded.defName;
+        ProcessDef processDef = (hotReload
+            ? (DefDatabase<ProcessDef>.GetNamed(defName, errorOnFail: false) ?? new ProcessDef())
+            : new ProcessDef());
+
+
+        processDef.defName = defName;
+        processDef.label = defBeingUpgraded.label;
+        processDef.labelOverride = defBeingUpgraded.labelOverride;
+        processDef.description = defBeingUpgraded.description;
+        processDef.priorityInBillList = defBeingUpgraded.priorityInBillList;
+        processDef.spawnOnInteractionCell = defBeingUpgraded.spawnOnInteractionCell;
+        processDef.autoGrabFromHoppers = defBeingUpgraded.autoGrabFromHoppers;
+        processDef.autoInputSlots = templateForNew.autoInputSlots;
+        processDef.disallowMixing = defBeingUpgraded.disallowMixing;
+        processDef.ticks = (int)(defBeingUpgraded.ticks * tickMultiplier);
+        processDef.ingredients = defBeingUpgraded.ingredients;
+        processDef.results = defBeingUpgraded.results;
+        processDef.isFactoryProcess = defBeingUpgraded.isFactoryProcess;
+        processDef.autoExtract = defBeingUpgraded.autoExtract;
+        processDef.onlyGrabAndOutputToFactoryHoppers = defBeingUpgraded.onlyGrabAndOutputToFactoryHoppers;
+        processDef.useFirstIngredientAsOutputStuff = defBeingUpgraded.useFirstIngredientAsOutputStuff;
+        processDef.hideProcessIfNotNaturalRock = defBeingUpgraded.hideProcessIfNotNaturalRock;
+        processDef.rockToDetect=defBeingUpgraded.rockToDetect;
+        processDef.sustainerWhenWorking = defBeingUpgraded.sustainerWhenWorking;
+        processDef.sustainerDef = defBeingUpgraded.sustainerDef;
+        processDef.effecterWhenWorking = defBeingUpgraded.effecterWhenWorking;
+        processDef.effecterDef = defBeingUpgraded.effecterDef;
+        processDef.maxOutputCount = defBeingUpgraded.maxOutputCount;
+        processDef.considerBuildingCompResource = defBeingUpgraded.considerBuildingCompResource;
+        processDef.researchPrerequisites = defBeingUpgraded.researchPrerequisites;
+
+        buildingGettingRecipes.GetCompProperties<CompProperties_AdvancedResourceProcessor>()
+            .processes.Add(processDef);
+        return processDef;
+    }
 
     public static ProcessDef UpgradeTierCombinedProcesses(string prefix, float tickMultiplier,
         ProcessDef defBeingUpgraded, ThingDef buildingGettingRecipes, int index, bool hotReload = false) {

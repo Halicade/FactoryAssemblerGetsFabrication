@@ -338,6 +338,27 @@ public class MassProductionExpansion : Mod
                 DefGenerator.AddImpliedDef(item, hotReload);
             }
         }
+
+        if (ModsConfig.OdysseyActive) {
+            foreach (var item in ImpliedUpgrader.ImpliedTransferProcess("MPET3G_", 1f,
+                         MPEDefOf.MPE_SmartAutomatedMachiningBay,
+                         MPEDefOf.MPE_GravtechAssembler, MPEDefOf.MPE_Grav_, hotReload)) {
+                DefGenerator.AddImpliedDef(item, hotReload);
+            }
+            
+            foreach (var item in ImpliedUpgrader.ImpliedTransferProcess("MPET3G_", 1f,
+                         MPEDefOf.MPE_SmartAutomatedAssembler,
+                         MPEDefOf.MPE_GravtechAssembler, MPEDefOf.MPE_Grav_, hotReload)) {
+                DefGenerator.AddImpliedDef(item, hotReload);
+            }
+            
+            foreach (var item in ImpliedUpgrader.ImpliedTransferProcess("MPET3G_", 1f,
+                         MPEDefOf.MPE_SmartAutoloom,
+                         MPEDefOf.MPE_GravtechAssembler, MPEDefOf.MPE_Grav_, hotReload)) {
+                DefGenerator.AddImpliedDef(item, hotReload);
+            }
+            
+        }
     }
 
     // Need to run after Munitions Industries for VFE - Factory

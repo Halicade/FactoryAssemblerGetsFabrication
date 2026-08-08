@@ -11,8 +11,6 @@ public class ImpliedBionics
     public static IEnumerable<PipeSystem.ProcessDef> ImpliedFSFBionicProcesses(bool hotReload = false) {
         List<ThingDef> FSFBionicRecipes = DefDatabase<ThingDef>.AllDefsListForReading.Where(x =>
             (x.costStuffCount != 0 || x.costList != null)
-            //Assembling station only has 4 ports
-            && x.costList?.Count < 5
             && x.recipeMaker?.recipeUsers?.Contains(MPEDefOf.FSFBionicsTable) == true &&
             !x.defName.Contains("Shell")).ToList();
 

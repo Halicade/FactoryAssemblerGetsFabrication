@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MassProductionExpansion.Defs;
 using MassProductionExpansion.Generator;
 using PipeSystem;
 using Verse;
@@ -35,7 +36,6 @@ public class ImpliedUpgrader
         ThingDef defBeingUpgraded,
         ThingDef buildingGettingUpgrades,
         bool hotReload = false) {
-        
         CompProperties_AdvancedResourceProcessor processComp =
             defBeingUpgraded.GetCompProperties<CompProperties_AdvancedResourceProcessor>();
         bool haveProcesses = processComp?.processes.NullOrEmpty() == false;
@@ -49,7 +49,31 @@ public class ImpliedUpgrader
             }
         }
         else {
-            Log.Warning(defBeingUpgraded+" Has no recipes ");
+            Log.Warning(defBeingUpgraded + " Has no recipes ");
+        }
+    }
+
+    public static IEnumerable<ProcessDef> ImpliedTransferProcess(
+        string prefix,
+        float tickMultiplier,
+        ThingDef defBeingUpgraded,
+        ThingDef buildingGettingUpgrades,
+        ProcessorTemplateDef templateForNew,
+        bool hotReload = false) {
+        CompProperties_AdvancedResourceProcessor processComp =
+            defBeingUpgraded.GetCompProperties<CompProperties_AdvancedResourceProcessor>();
+        bool haveProcesses = processComp?.processes.NullOrEmpty() == false;
+        if (haveProcesses) {
+            List<ProcessDef> upgradeableRecipes = processComp.processes.ToList();
+
+            foreach (ProcessDef recipe in upgradeableRecipes) {
+                yield return UpgradeGenerator.TransferTier(prefix: prefix, tickMultiplier: tickMultiplier,
+                    defBeingUpgraded: recipe,
+                    buildingGettingRecipes: buildingGettingUpgrades, templateForNew: templateForNew, hotReload: hotReload);
+            }
+        }
+        else {
+            Log.Warning(defBeingUpgraded + " Has no recipes ");
         }
     }
 }

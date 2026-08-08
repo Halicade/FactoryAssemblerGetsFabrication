@@ -14,8 +14,6 @@ public class ImpliedMedicine
         
         List<ThingDef> medicines = DefDatabase<ThingDef>.AllDefsListForReading.Where(x =>
             (x.costStuffCount != 0 || x.costList != null)
-            //medical station only has 3 ports
-            && x.costList?.Count < 4
             && x.recipeMaker?.recipeUsers?.Contains(MPEDefOf.DrugLab) == true
         ).ToList();
         int granulatorCount = FactoryDefOf.VFEFactory_MedicineGranulator
