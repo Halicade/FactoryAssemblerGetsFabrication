@@ -30,7 +30,6 @@ public class ImpliedSmelter
             .processes.Count;
 
         foreach (ThingDef def in recipesForSmelter) {
-            Log.Message("Creating smelting recipe for " + def);
             yield return Generator.Smelter.ProcessFromSmelterRecipe("MPE_T2Smelter_",
                 2,
                 MPEDefOf.MPE_Smelter_, def, ++smelterCount,
@@ -47,7 +46,6 @@ public class ImpliedSmelter
             .GetCompProperties<CompProperties_AdvancedResourceProcessor>()
             .processes.Count;
         foreach (ThingDef def in recipesForAssmebler) {
-            Log.Message("Creating machinig recipe for " + def);
             yield return Generator.Smelter.ProcessFromSmelterRecipe("MPE_T2Machining_",
                 2,
                 MPEDefOf.MPE_Machining_, def, ++machiningBayCount,

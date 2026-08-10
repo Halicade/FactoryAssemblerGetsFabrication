@@ -63,7 +63,8 @@
 		</inspectorTabs>
 		<comps>
 			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
+				<compClass>PipeSystem.CompPowerPlantNeedResource</compClass>
+				<transmitsPower>true</transmitsPower>
 				<shortCircuitInRain>false</shortCircuitInRain>
 				<basePowerConsumption>1200</basePowerConsumption>
 			</li>
@@ -92,6 +93,10 @@
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
 				</linkableFacilities>
+			</li>
+			<li Class="PipeSystem.CompProperties_ResourceTrader">
+				<pipeNet>MPE_CoolantNet</pipeNet>
+				<consumptionPerTick>0.2</consumptionPerTick>
 			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>

@@ -335,18 +335,15 @@
         			<centerOffset>(-0, 0, -0.43)</centerOffset>
 			</li>
 			<li Class="CompProperties_Flickable"/>
-			<li Class="PipeSystem.CompProperties_SpawnerOrNet">
+			<li Class="MassProductionExpansion.Pipenet.CompProperties_SpawnToNet">
 				<pipeNet>MPE_CoolantNet</pipeNet>
 				<!-- Vanilla part -->
-				<requiresPower>true</requiresPower>
 				<thingToSpawn>MPE_Coolant</thingToSpawn>
 				<spawnCount>250</spawnCount>
 				<spawnIntervalRange>
 					<min>60000</min>
 					<max>60000</max>
 				</spawnIntervalRange>
-				<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
-				<showMessageIfOwned>true</showMessageIfOwned>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
