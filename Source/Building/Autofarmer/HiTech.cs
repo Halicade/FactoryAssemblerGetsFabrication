@@ -1,0 +1,639 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using MassProductionExpansion.Commands;
+using RimWorld;
+using UnityEngine;
+using VanillaFurnitureExpandedFactory;
+using Verse;
+using Verse.Sound;
+
+namespace MassProductionExpansion.Building.Autofarmer;
+
+[StaticConstructorOnStartup]
+[HotSwappable]
+public class HiTech : Verse.Building, IPlantToGrowSettable
+{
+    public enum AutofarmerState
+    {
+        Idle,
+        MovingForward,
+        MovingBackward,
+        Offloading
+    }
+
+    private static readonly Texture2D IncreaseZoneIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/ZoneLarger_Gizmo");
+    private static readonly Texture2D DecreaseZoneIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/ZoneSmaller_Gizmo");
+    private static readonly Texture2D StartIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Start_Gizmo");
+    private static readonly Texture2D CancelIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Cancel_Gizmo");
+    private static readonly Texture2D AutoHarvestIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Autoharvesting_Gizmo");
+    private static readonly Texture2D AutoSowIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Autosowing_Gizmo");
+    private static readonly Texture2D AutocycleIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Autocycle_Gizmo");
+
+    public static readonly Graphic AutofarmerBaseGraphic = GraphicDatabase.Get<Graphic_Multi>(
+        "Things/Building/Factories/Autofarm/HiTechAutofarmerBase",
+        ShaderDatabase.Cutout, new Vector2(7, 3), Color.white);
+
+    public static readonly Graphic AutofarmerMachineGraphic = GraphicDatabase.Get<Graphic_Multi>(
+        "Things/Building/Factories/Autofarm/HiTechAutofarmer",
+        ShaderDatabase.Cutout, new Vector2(7, 3), Color.white);
+
+    private int zoneLength = 3;
+    private bool autoHarvest = true;
+    private bool autoSow = true;
+    private bool autocycle = false;
+    private ThingDef plantDefToGrow = ThingDefOf.Plant_Potato;
+
+    private AutofarmerState state = AutofarmerState.Idle;
+    private float currentOffset = 0f;
+    private int lastProcessedRow = 0;
+
+    private CompPowerTrader powerComp;
+    private List<Effecter> harvestEffecters = [];
+    private List<Effecter> sowEffecters = [];
+    private Sustainer workingSustainer;
+    private IntVec3 lastMachineCell;
+    private List<Thing> harvestStorageThings = [];
+    private List<int> harvestStorageLanes = [];
+    private int offloadTickTimer = 0;
+    private int autocycleCheckTimer = 0;
+
+    public override void SpawnSetup(Map map, bool respawningAfterLoad) {
+        base.SpawnSetup(map, respawningAfterLoad);
+        powerComp = GetComp<CompPowerTrader>();
+    }
+
+    public override void ExposeData() {
+        base.ExposeData();
+        Scribe_Values.Look(ref zoneLength, "zoneLength", 3);
+        Scribe_Values.Look(ref autoHarvest, "autoHarvest", true);
+        Scribe_Values.Look(ref autoSow, "autoSow", true);
+        Scribe_Values.Look(ref autocycle, "autocycle", false);
+        Scribe_Defs.Look(ref plantDefToGrow, "plantDefToGrow");
+        Scribe_Values.Look(ref state, "state", AutofarmerState.Idle);
+        Scribe_Values.Look(ref currentOffset, "currentOffset", 0f);
+        Scribe_Values.Look(ref lastProcessedRow, "lastProcessedRow", 0);
+        Scribe_Collections.Look(ref harvestStorageThings, "harvestStorageThings", LookMode.Deep);
+        Scribe_Collections.Look(ref harvestStorageLanes, "harvestStorageLanes", LookMode.Value);
+
+        if (Scribe.mode == LoadSaveMode.PostLoadInit) {
+            harvestStorageThings ??= [];
+            harvestStorageLanes ??= [];
+        }
+    }
+
+    protected override void Tick() {
+        base.Tick();
+        UpdatePowerConsumption();
+        if (!powerComp.PowerOn) {
+            foreach (var e in harvestEffecters) e?.Cleanup();
+            harvestEffecters.Clear();
+            foreach (var e in sowEffecters) e?.Cleanup();
+            sowEffecters.Clear();
+            workingSustainer?.End();
+            workingSustainer = null;
+            return;
+        }
+
+        if (state == AutofarmerState.Idle) {
+            foreach (var e in harvestEffecters) e?.Cleanup();
+            harvestEffecters.Clear();
+            foreach (var e in sowEffecters) e?.Cleanup();
+            sowEffecters.Clear();
+            workingSustainer?.End();
+            workingSustainer = null;
+
+            if (autocycle && powerComp.PowerOn) {
+                autocycleCheckTimer++;
+                if (autocycleCheckTimer >= 600) {
+                    autocycleCheckTimer = 0;
+                    if (!IsZoneObstructed() && GetCropMaturityPercent() >= 0.9f) {
+                        state = AutofarmerState.MovingForward;
+                        lastProcessedRow = 0;
+                    }
+                }
+            }
+
+            return;
+        }
+
+        MaintainEffecters();
+
+        if (state == AutofarmerState.MovingForward) {
+            Vector3 machinePos = DrawPos + Rotation.FacingCell.ToVector3() * currentOffset;
+            IntVec3 machineCell = machinePos.ToIntVec3();
+            if (machineCell != lastMachineCell || workingSustainer is null) {
+                workingSustainer?.End();
+                workingSustainer =
+                    InternalDefOf.VFEFactory_DefaultFactorySustainer.TrySpawnSustainer(
+                        SoundInfo.InMap(new TargetInfo(machineCell, Map), MaintenanceType.PerTick));
+                lastMachineCell = machineCell;
+            }
+
+            workingSustainer.Maintain();
+        }
+        else {
+            workingSustainer?.End();
+            workingSustainer = null;
+            lastMachineCell = IntVec3.Invalid;
+        }
+
+        float speedTicks = 30f;
+        if (state == AutofarmerState.MovingForward) {
+            speedTicks = autoHarvest switch {
+                false when !autoSow => 30f,
+                true when !autoSow => 90f,
+                false when autoSow => 120f,
+                _ => 210f
+            };
+        }
+
+        float moveAmount = 1f / speedTicks;
+
+        switch (state) {
+            case AutofarmerState.MovingForward: {
+                currentOffset += moveAmount;
+                int currentRow = Mathf.FloorToInt(currentOffset);
+
+                if (currentRow > lastProcessedRow && currentRow <= zoneLength) {
+                    if (IsZoneObstructed()) {
+                        Messages.Message("VFEFactory_AutofarmerObstructed".Translate(), MessageTypeDefOf.RejectInput,
+                            false);
+                        state = AutofarmerState.MovingBackward;
+                        return;
+                    }
+
+                    ProcessRow(currentRow);
+                    lastProcessedRow = currentRow;
+                }
+
+                if (currentOffset >= zoneLength) {
+                    state = AutofarmerState.MovingBackward;
+                }
+
+                break;
+            }
+            case AutofarmerState.MovingBackward: {
+                currentOffset -= moveAmount;
+                if (currentOffset <= 0f) {
+                    currentOffset = 0f;
+                    lastProcessedRow = 0;
+                    foreach (var e in harvestEffecters) e?.Cleanup();
+                    harvestEffecters.Clear();
+                    foreach (var e in sowEffecters) e?.Cleanup();
+                    sowEffecters.Clear();
+                    workingSustainer?.End();
+                    workingSustainer = null;
+
+                    state = harvestStorageThings.Count > 0 ? AutofarmerState.Offloading : AutofarmerState.Idle;
+                    offloadTickTimer = 0;
+                }
+
+                break;
+            }
+            case AutofarmerState.Offloading: {
+                offloadTickTimer++;
+                if (offloadTickTimer >= 60) {
+                    offloadTickTimer = 0;
+                    TryOffloadToHoppers();
+                }
+
+                break;
+            }
+        }
+    }
+
+    private void ProcessRow(int rowOffset) {
+        var cells = GetRowCells(rowOffset).ToList();
+        List<Building_FactoryHopper> backHoppers = GetBackHoppers();
+
+        foreach (IntVec3 c in cells) {
+            Plant plant = c.GetPlant(Map);
+            if (autoHarvest && plant != null) {
+                EffecterDef effecterDef =
+                    plant.def.plant.IsTree ? EffecterDefOf.Harvest_Tree : EffecterDefOf.Harvest_Plant;
+                Effecter effecter = effecterDef.Spawn(c, Map);
+                effecter.Trigger(new TargetInfo(c, Map), new TargetInfo(c, Map));
+                effecter.Cleanup();
+
+                if (plant.HarvestableNow) {
+                    int yield = plant.YieldNow();
+                    if (yield > 0) {
+                        Thing t = ThingMaker.MakeThing(plant.def.plant.harvestedThingDef);
+                        t.stackCount = yield;
+
+                        bool hasValidHopper = false;
+                        for (int h = 0; h < backHoppers.Count; h++) {
+                            if (backHoppers[h] != null && backHoppers[h].slotGroup != null &&
+                                backHoppers[h].slotGroup.Settings.AllowedToAccept(t)) {
+                                hasValidHopper = true;
+                                break;
+                            }
+                        }
+
+                        if (hasValidHopper) {
+                            int lane = GetLaneIndex(c);
+                            bool merged = false;
+                            for (int idx = 0; idx < harvestStorageThings.Count; idx++) {
+                                if (harvestStorageLanes[idx] == lane && harvestStorageThings[idx].CanStackWith(t)) {
+                                    harvestStorageThings[idx].stackCount += t.stackCount;
+                                    merged = true;
+                                    break;
+                                }
+                            }
+
+                            if (!merged) {
+                                harvestStorageThings.Add(t);
+                                harvestStorageLanes.Add(lane);
+                            }
+                        }
+                        else {
+                            if (!GenPlace.TryPlaceThing(t, c, Map, ThingPlaceMode.Direct))
+                                GenPlace.TryPlaceThing(t, c, Map, ThingPlaceMode.Near);
+                        }
+                    }
+                }
+
+                if (plant.def.plant.HarvestDestroys) {
+                    plant.Destroy();
+                }
+                else {
+                    plant.Growth = plant.def.plant.harvestAfterGrowth;
+                    Map.mapDrawer.MapMeshDirty(plant.Position, MapMeshFlagDefOf.Things);
+                }
+            }
+        }
+
+        foreach (IntVec3 c in cells) {
+            if (autoSow && plantDefToGrow != null && c.GetPlant(Map) == null) {
+                if (!this.OccupiedRect().Contains(c) && plantDefToGrow.CanNowPlantAt(c, Map)) {
+                    Effecter effecter = EffecterDefOf.Sow.Spawn(c, Map);
+                    effecter.Trigger(new TargetInfo(c, Map), new TargetInfo(c, Map));
+                    effecter.Cleanup();
+                    Plant newPlant = (Plant)GenSpawn.Spawn(plantDefToGrow, c, Map);
+                    newPlant.Growth = 0.0001f;
+                    newPlant.sown = true;
+                }
+            }
+        }
+    }
+
+    private IEnumerable<IntVec3> GetRowCells(int rowOffset) {
+        CellRect rect = this.OccupiedRect();
+        IntVec3 right = Rotation.RighthandCell;
+
+        IntVec3 frontEdge;
+        int halfWidth;
+
+        if (Rotation == Rot4.North) {
+            frontEdge = new IntVec3(rect.CenterCell.x, 0, rect.maxZ + rowOffset);
+            halfWidth = (rect.Width - 1) / 2;
+        }
+        else if (Rotation == Rot4.South) {
+            frontEdge = new IntVec3(rect.CenterCell.x, 0, rect.minZ - rowOffset);
+            halfWidth = (rect.Width - 1) / 2;
+        }
+        else if (Rotation == Rot4.East) {
+            frontEdge = new IntVec3(rect.maxX + rowOffset, 0, rect.CenterCell.z);
+            halfWidth = (rect.Height - 1) / 2;
+        }
+        else {
+            frontEdge = new IntVec3(rect.minX - rowOffset, 0, rect.CenterCell.z);
+            halfWidth = (rect.Height - 1) / 2;
+        }
+
+        for (int i = -halfWidth; i <= halfWidth; i++) {
+            IntVec3 cell = frontEdge + right * i;
+            if (!cell.InBounds(Map)) continue;
+            yield return cell;
+        }
+    }
+
+    private void UpdatePowerConsumption() {
+        powerComp.PowerOutput = (state == AutofarmerState.Idle || state == AutofarmerState.Offloading)
+            ? -50f
+            : -1200f;
+    }
+
+    private void MaintainEffecters() {
+        if (state != AutofarmerState.MovingForward) {
+            foreach (var e in harvestEffecters) e?.Cleanup();
+            harvestEffecters.Clear();
+            foreach (var e in sowEffecters) e?.Cleanup();
+            sowEffecters.Clear();
+            return;
+        }
+
+        int visualRow = Mathf.Max(1, Mathf.RoundToInt(currentOffset));
+        var cells = GetRowCells(visualRow).ToList();
+
+        while (harvestEffecters.Count < cells.Count) {
+            harvestEffecters.Add(null);
+        }
+
+        while (sowEffecters.Count < cells.Count) {
+            sowEffecters.Add(null);
+        }
+
+        for (int i = 0; i < cells.Count; i++) {
+            IntVec3 c = cells[i];
+            TargetInfo target = new TargetInfo(c, Map);
+            Plant plant = c.GetPlant(Map);
+
+            bool wantHarvest = autoHarvest && plant != null
+                                           && (!plant.sown || plant.HarvestableNow);
+            bool wantSow = !wantHarvest && autoSow && plantDefToGrow != null
+                           && plant == null && plantDefToGrow.CanNowPlantAt(c, Map);
+
+            if (wantHarvest) {
+                EffecterDef effecterDef = plant.def.plant.IsTree
+                    ? EffecterDefOf.Harvest_Tree
+                    : EffecterDefOf.Harvest_Plant;
+
+                if (harvestEffecters[i] != null && harvestEffecters[i].def != effecterDef) {
+                    harvestEffecters[i].Cleanup();
+                    harvestEffecters[i] = null;
+                }
+
+                if (harvestEffecters[i] == null) {
+                    harvestEffecters[i] = effecterDef.Spawn(c, Map);
+                }
+
+                harvestEffecters[i].EffectTick(target, target);
+            }
+            else {
+                harvestEffecters[i]?.Cleanup();
+                harvestEffecters[i] = null;
+            }
+
+            if (wantSow) {
+                if (sowEffecters[i] == null)
+                    sowEffecters[i] = EffecterDefOf.Sow.Spawn(c, Map);
+                sowEffecters[i].EffectTick(target, target);
+            }
+            else {
+                sowEffecters[i]?.Cleanup();
+                sowEffecters[i] = null;
+            }
+        }
+    }
+
+    private int GetLaneIndex(IntVec3 cell) {
+        CellRect rect = this.OccupiedRect();
+        return (Rotation == Rot4.North || Rotation == Rot4.South)
+            ? cell.x - rect.minX
+            : cell.z - rect.minZ;
+    }
+
+    private List<Building_FactoryHopper> GetBackHoppers() {
+        CellRect rect = this.OccupiedRect();
+        List<IntVec3> backCells = [];
+
+        if (Rotation == Rot4.North) {
+            for (int x = rect.minX; x <= rect.maxX; x++) {
+                backCells.Add(new IntVec3(x, 0, rect.minZ - 1));
+            }
+        }
+        else if (Rotation == Rot4.South) {
+            for (int x = rect.minX; x <= rect.maxX; x++) {
+                backCells.Add(new IntVec3(x, 0, rect.maxZ + 1));
+            }
+        }
+        else if (Rotation == Rot4.East) {
+            for (int z = rect.minZ; z <= rect.maxZ; z++) {
+                backCells.Add(new IntVec3(rect.minX - 1, 0, z));
+            }
+        }
+        else {
+            for (int z = rect.minZ; z <= rect.maxZ; z++) {
+                backCells.Add(new IntVec3(rect.maxX + 1, 0, z));
+            }
+        }
+
+        return backCells.Select(c => c.InBounds(Map) ? c.GetFirstThing<Building_FactoryHopper>(Map) : null).ToList();
+    }
+
+    private void TryOffloadToHoppers() {
+        List<Building_FactoryHopper> backHoppers = GetBackHoppers();
+
+        for (int i = harvestStorageThings.Count - 1; i >= 0; i--) {
+            Thing t = harvestStorageThings[i];
+            int lane = harvestStorageLanes[i];
+
+            var orderedHoppers = backHoppers
+                .Select((h, idx) => (h, idx))
+                .Where(x => x.h != null && x.h.slotGroup.Settings.AllowedToAccept(t))
+                .OrderBy(x => x.idx == lane ? 0 : 1)
+                .Select(x => x.h)
+                .ToList();
+
+            if (orderedHoppers.Count == 0) {
+                GenPlace.TryPlaceThing(t, Position, Map, ThingPlaceMode.Near);
+                harvestStorageThings.RemoveAt(i);
+                harvestStorageLanes.RemoveAt(i);
+                continue;
+            }
+
+            foreach (var hopper in orderedHoppers) {
+                if (DepositInHopper(hopper, t)) {
+                    harvestStorageThings.RemoveAt(i);
+                    harvestStorageLanes.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        if (harvestStorageThings.Count == 0)
+            state = AutofarmerState.Idle;
+    }
+
+    private bool DepositInHopper(Building_FactoryHopper hopper, Thing t) {
+        foreach (Thing existing in hopper.slotGroup.HeldThings.ToList()) {
+            if (t.CanStackWith(existing) && existing.stackCount < existing.def.stackLimit) {
+                int toMove = Mathf.Min(t.stackCount, existing.def.stackLimit - existing.stackCount);
+                existing.stackCount += toMove;
+                t.stackCount -= toMove;
+                if (t.stackCount <= 0) {
+                    return true;
+                }
+            }
+        }
+
+        if (t.stackCount > 0) {
+            return GenPlace.TryPlaceThing(t, hopper.Position, Map, ThingPlaceMode.Direct);
+        }
+
+        return true;
+    }
+
+    private float GetCropMaturityPercent() {
+        int total = 0, fullyGrown = 0;
+        for (int i = 1; i <= zoneLength; i++) {
+            foreach (IntVec3 c in GetRowCells(i)) {
+                Plant plant = c.GetPlant(Map);
+                if (plant != null && plant.def == plantDefToGrow) {
+                    total++;
+                    if (plant.Growth >= 0.95f) {
+                        fullyGrown++;
+                    }
+                }
+            }
+        }
+
+        return total == 0 ? 0f : (float)fullyGrown / total;
+    }
+
+    public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish) {
+        if (Spawned && harvestStorageThings != null) {
+            for (int i = harvestStorageThings.Count - 1; i >= 0; i--) {
+                GenPlace.TryPlaceThing(harvestStorageThings[i], Position, Map, ThingPlaceMode.Near);
+            }
+        }
+
+        harvestStorageThings?.Clear();
+        harvestStorageLanes?.Clear();
+        base.DeSpawn(mode);
+    }
+
+    public override IEnumerable<Gizmo> GetGizmos() {
+        foreach (var g in base.GetGizmos()) yield return g;
+
+        yield return new Command_Action {
+            defaultLabel = "VFEFactory_IncreaseZone".Translate(),
+            defaultDesc = "VFEFactory_IncreaseZoneDesc".Translate(),
+            icon = IncreaseZoneIcon,
+            action = () => {
+                if (zoneLength < 30) {
+                    zoneLength++;
+                }
+            }
+        };
+
+        yield return new Command_Action {
+            defaultLabel = "VFEFactory_DecreaseZone".Translate(),
+            defaultDesc = "VFEFactory_DecreaseZoneDesc".Translate(),
+            icon = DecreaseZoneIcon,
+            action = () => {
+                if (zoneLength > 3) {
+                    zoneLength--;
+                }
+            }
+        };
+
+        if (state == AutofarmerState.Idle) {
+            Command_Action command_Action2 = new Command_Action {
+                defaultLabel = "VFEFactory_StartAutofarmer".Translate(),
+                defaultDesc = "VFEFactory_StartAutofarmerDesc".Translate(),
+                icon = StartIcon,
+                action = () => {
+                    if (IsZoneObstructed()) {
+                        Messages.Message("VFEFactory_AutofarmerObstructed".Translate(), MessageTypeDefOf.RejectInput,
+                            false);
+                        return;
+                    }
+
+                    state = AutofarmerState.MovingForward;
+                    lastProcessedRow = 0;
+                }
+            };
+            if (!powerComp.PowerOn) {
+                command_Action2.Disable("NoPower".Translate().CapitalizeFirst());
+            }
+
+            yield return command_Action2;
+        }
+        else {
+            yield return new Command_Action {
+                defaultLabel = "VFEFactory_CancelAutofarmer".Translate(),
+                defaultDesc = "VFEFactory_CancelAutofarmerDesc".Translate(),
+                icon = CancelIcon,
+                action = () => { state = AutofarmerState.MovingBackward; }
+            };
+        }
+
+        yield return new SetToGrowHiTech {
+            defaultDesc = "CommandSelectPlantToGrowDesc".Translate(),
+            hotKey = KeyBindingDefOf.Misc12,
+            hiTechSettable = this
+        };
+
+        yield return new Command_Toggle {
+            defaultLabel = "VFEFactory_Autoharvesting".Translate(),
+            defaultDesc = "VFEFactory_AutoharvestingDesc".Translate(),
+            icon = AutoHarvestIcon,
+            isActive = () => autoHarvest,
+            toggleAction = () => autoHarvest = !autoHarvest
+        };
+
+        yield return new Command_Toggle {
+            defaultLabel = "VFEFactory_Autosowing".Translate(),
+            defaultDesc = "VFEFactory_AutosowingDesc".Translate(),
+            icon = AutoSowIcon,
+            isActive = () => autoSow,
+            toggleAction = () => autoSow = !autoSow
+        };
+
+        yield return new Command_Toggle {
+            defaultLabel = "VFEFactory_AutocycleWhenGrown".Translate(),
+            defaultDesc = "VFEFactory_AutocycleWhenGrownDesc".Translate(),
+            icon = AutocycleIcon,
+            isActive = () => autocycle,
+            toggleAction = () => autocycle = !autocycle
+        };
+    }
+
+    public IEnumerable<IntVec3> Cells {
+        get
+        {
+            List<IntVec3> cells = [];
+            for (int i = 1; i <= zoneLength; i++) {
+                cells.AddRange(GetRowCells(i));
+            }
+
+            return cells;
+        }
+    }
+
+    public bool CanAcceptSowNow() {
+        return true;
+    }
+
+    public ThingDef GetPlantDefToGrow() {
+        return plantDefToGrow;
+    }
+
+    public void SetPlantDefToGrow(ThingDef plantDef) {
+        plantDefToGrow = plantDef;
+    }
+
+    private bool IsZoneObstructed() {
+        for (int i = 1; i <= zoneLength; i++) {
+            foreach (IntVec3 c in GetRowCells(i)) {
+                Verse.Building b = c.GetEdifice(Map);
+                if (b != null && b.def.passability == Traversability.Impassable) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    protected override void DrawAt(Vector3 drawLoc, bool flip = false) {
+        Vector3 basePos = drawLoc;
+        AutofarmerBaseGraphic?.Draw(basePos, Rotation, this, 0f);
+
+        Vector3 machinePos = drawLoc + Rotation.FacingCell.ToVector3() * currentOffset;
+        machinePos.y = drawLoc.y + 0.0405f;
+        AutofarmerMachineGraphic?.Draw(machinePos, flip ? Rotation.Opposite : Rotation, this, 0f);
+    }
+
+    public override void DrawExtraSelectionOverlays() {
+        base.DrawExtraSelectionOverlays();
+        List<IntVec3> zoneCells = [];
+        for (int i = 1; i <= zoneLength; i++) {
+            zoneCells.AddRange(GetRowCells(i));
+        }
+
+        GenDraw.DrawFieldEdges(zoneCells, Color.white);
+    }
+}

@@ -1492,4 +1492,76 @@
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>MPE_SmartAutofarmer</defName>
+		<thingClass>MassProductionExpansion.Building.Autofarmer.Smart</thingClass>
+		<label>smart autofarmer</label>
+		<description>A large, automated machine that combines the functions of a sower and harvester, moving back and forth across a designated outdoor zone to harvest mature plants and sow new crops. It deposits harvested goods into attached factory hoppers or drops them on the ground if hoppers are not present, and its operation can be set to automatically cycle once the majority of plants in the zone are fully grown.</description>
+		<drawerType>RealtimeOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<graphicData>
+			<texPath>Things/Building/Factories/Autofarm/SmartAutofarmer</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(7, 3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<fillPercent>0</fillPercent>
+		<statBases>
+			<Mass>60</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(7, 3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>Impassable</passability>
+		<pathCost>50</pathCost>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_Autofarmer</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<sowTag>Ground</sowTag>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+		</building>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="VanillaFurnitureExpandedFactory.CompProperties_ShowAutofarmerSpots" />
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
+	</ThingDef>
 </Defs>

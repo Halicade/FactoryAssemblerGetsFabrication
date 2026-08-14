@@ -29,6 +29,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Reference Include="mscorlib">
+          <HintPath>..\..\..\RimWorldWin64_Data\Managed\mscorlib.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
         <Reference Include="PipeSystem">
           <HintPath>..\..\..\..\..\workshop\content\294100\2023507013\1.6\Assemblies\PipeSystem.dll</HintPath>
           <Private>False</Private>
@@ -52,6 +56,10 @@
         <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
             <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+          <HintPath>..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="VanillaFurnitureExpandedFactory">
           <HintPath>..\..\..\..\..\workshop\content\294100\3686924415\1.6\Assemblies\VanillaFurnitureExpandedFactory.dll</HintPath>
