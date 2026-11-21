@@ -39,7 +39,7 @@
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -137,7 +137,7 @@
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -236,7 +236,7 @@
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -340,7 +340,7 @@
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -440,7 +440,7 @@
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -539,7 +539,7 @@
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -637,7 +637,7 @@
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -736,7 +736,7 @@
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -837,7 +837,7 @@
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -938,7 +938,7 @@
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1040,7 +1040,7 @@
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1140,7 +1140,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1230,7 +1230,7 @@
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1331,7 +1331,7 @@
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
@@ -1432,7 +1432,7 @@
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>4</VEF_BuildingMaxOverclockFactor>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>

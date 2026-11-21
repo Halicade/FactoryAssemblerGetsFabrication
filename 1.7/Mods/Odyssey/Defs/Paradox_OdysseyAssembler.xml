@@ -43,7 +43,7 @@
             <VEF_BuildingBreakdownFactor>1</VEF_BuildingBreakdownFactor>
             <VEF_BuildingMaxOverclockFactor>5</VEF_BuildingMaxOverclockFactor>
         </statBases>
-        <tickerType>Rare</tickerType>
+        <tickerType>Normal</tickerType>
         <size>(3,3)</size>
         <designationCategory>VFEFactory_Factories</designationCategory>
         <passability>PassThroughOnly</passability>
