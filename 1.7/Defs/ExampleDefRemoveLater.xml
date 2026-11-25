@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Example def to make a light and have it get minified. 
+    Using the oven as a base cause it was the first def I found
+    
+    -->
+
+    <PipeSystem.ProcessDef>
+        <defName>MPE_T2_MakeSimplLight</defName>
+        <label>Make simple light</label>
+        <labelOverride>Make simple light</labelOverride>
+        <description>Prepare packaged survival meals from a combination of meat and plant ingredients. Much of the ingredients are wasted in the preservation process. A total of 2.4 nutrition will make 4 survival meals.</description>
+        <priorityInBillList>2</priorityInBillList>
+        <spawnOnInteractionCell>true</spawnOnInteractionCell>
+        <autoGrabFromHoppers>true</autoGrabFromHoppers>
+        <useIngredients>true</useIngredients>
+        <autoInputSlots>
+            <li>(0,0,3)</li>
+            <li>(1,0,3)</li>
+            <li>(-1,0,3)</li>
+        </autoInputSlots>
+        <ticks>7200</ticks>
+        <ingredients>
+            <li>
+                <thingCategory>MeatRaw</thingCategory>
+                <countNeeded>24</countNeeded>
+            </li>
+            <li>
+                <thingCategory>PlantFoodRaw</thingCategory>
+                <countNeeded>24</countNeeded>
+            </li>
+        </ingredients>
+        <results>
+            <li>
+                <thing>WallLamp</thing>
+                <count>1</count>
+
+            </li>
+        </results>
+        <isFactoryProcess>true</isFactoryProcess>
+        <autoExtract>true</autoExtract>
+        <onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+        <researchPrerequisites>
+            <li>PackagedSurvivalMeal</li>
+            <li>VFE_BasicFactories</li>
+        </researchPrerequisites>
+        <sustainerWhenWorking>true</sustainerWhenWorking>
+        <sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
+        <effecterWhenWorking>true</effecterWhenWorking>
+        <effecterDef>VFEFactory_Cook</effecterDef>
+        <maxOutputCount>20</maxOutputCount>
+        <modExtensions>
+            <li Class="MassProductionExpansion.ModExtension.nutritionChanger">
+                <nutritionToMake>2.4</nutritionToMake>
+            </li>
+        </modExtensions>
+    </PipeSystem.ProcessDef>
+</Defs>

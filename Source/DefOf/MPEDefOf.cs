@@ -36,22 +36,37 @@ public class MPEDefOf
     public static ThingDef MPE_HiTechAutomatedCannery;
     
     // T3
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedDrillPlatform;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedSmelter;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedBiofuelRefinery;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedMasonrySaw;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedMincer;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartConveyorOven;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedAssembler;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartNeutroamineSynthesizer;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedAmmunitionPress;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutoloom;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedAlloyForge;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedDistillery;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartMedicineGranulator;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedMachiningBay;
+    [MayRequire("OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedCrematorium;
-    [MayRequire("VanillaExpanded.VCookE")]
+    [MayRequire("VanillaExpanded.VCookE,OskarPotocki.VFE.Ultratech")]
     public static ThingDef MPE_SmartAutomatedCannery;
 
     [MayRequireOdyssey] 

@@ -23,6 +23,10 @@
             <HintPath>..\..\..\Assembly-CSharp.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="VFEUltratech">
+          <HintPath>..\..\VanillaFactionsExpanded-Ultratech\1.7\Assemblies\VFEUltratech.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
         <Reference Include="Waylith">
             <HintPath>..\..\..\Waylith.dll</HintPath>
             <Private>False</Private>
@@ -47,6 +51,7 @@
             <HintPath>..\..\..\..\..\workshop\content\294100\2023507013\1.7\Assemblies\PipeSystem.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        
     </ItemGroup>
 
 </Project>

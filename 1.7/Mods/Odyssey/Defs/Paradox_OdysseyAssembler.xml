@@ -57,7 +57,7 @@
         </researchPrerequisites>
         <building>
             <relatedBuildCommands>
-                <li>MPE_SmartFactoryHopper</li>
+                <li MayRequire="OskarPotocki.VFE.Ultratech">MPE_SmartFactoryHopper</li>
             </relatedBuildCommands>
             <buildingTags>
                 <li>Production</li>

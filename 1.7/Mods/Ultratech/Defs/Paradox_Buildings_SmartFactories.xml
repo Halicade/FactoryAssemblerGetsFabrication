@@ -162,27 +162,38 @@
 			<li>PipeSystem.ITab_Processor</li>
 		</inspectorTabs>
 		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>1200</basePowerConsumption>
+			<li Class="PipeSystem.CompProperties_ResourceStorage">
+				<compClass>VFEUltratech.CompResourceStorage_Electric</compClass>
+				<pipeNet>VFEU_UltraWattNet</pipeNet>
+				<storageCapacity>1</storageCapacity>
+				<drawStorageBar>False</drawStorageBar>
+				<addTransferGizmo>False</addTransferGizmo>
+				<displayBasicInspectStringData>False</displayBasicInspectStringData>
 			</li>
-			<li>
-				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			<li Class="PipeSystem.CompProperties_ResourceTrader">
+				<compClass>VFEUltratech.CompResourceTrader_Electric</compClass>
+				<pipeNet>VFEU_UltraWattNet</pipeNet>
+				<consumptionPerDay>1</consumptionPerDay>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
 				<heatPerSecond>-14</heatPerSecond>
 				<heatPushMinTemperature>-120</heatPushMinTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable">
+				<commandTexture>UI/Gizmos/DesignatePowerToggle_UltraWatt</commandTexture>
+				<commandLabelKey>VFEU_UltraWattSwitch</commandLabelKey>
+				<commandDescKey>VFEU_UltraWattSwitchDesc</commandDescKey>
+			</li>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<!--
 				<canOverclock>true</canOverclock>
 				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
 				<overclockLabel>VFEFactory_Overclock</overclockLabel>
 				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
 				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				-->
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
 				</processes>

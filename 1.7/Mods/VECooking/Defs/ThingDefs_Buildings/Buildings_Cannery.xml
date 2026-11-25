@@ -102,7 +102,7 @@
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BuildingBase" MayRequire="OskarPotocki.VFE.Ultratech">
 		<defName>MPE_SmartAutomatedCannery</defName>
 		<label>smart cannery</label>
 		<description>A smart autonomous preserving system for the mass production of canned goods from various raw ingredients, requiring no manual labor.\n\nSmart Factory buildings produce at four times the speed of industrial factories, as well as needing factory hoppers for input and output. They cool the environment and consume twice as much power, but can be overclocked for vastly higher efficiency, drastically increasing power consumption and vastly decreasing local temperatures. Due to dust contamination this factory must be constructed on sterile tiles.</description>
@@ -156,7 +156,7 @@
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>MPE_SmartFactoryHopper</li>
+				<li MayRequire="OskarPotocki.VFE.Ultratech">MPE_SmartFactoryHopper</li>
 			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
